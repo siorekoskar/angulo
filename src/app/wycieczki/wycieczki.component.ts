@@ -61,7 +61,8 @@ function generateWycieczki() {
       maxIloscMiejsca: 5,
       opisWycieczki: "Mega dobra wycieczka",
       rezerwacje: 0,
-      link: "http://tutorialspark.com/AngularJS/Angular.png"
+      link: "http://tutorialspark.com/AngularJS/Angular.png",
+      waluta: 'EUR'
     },
     {
       nazwa: "Wycieczka2",
@@ -72,7 +73,8 @@ function generateWycieczki() {
       maxIloscMiejsca: 2,
       opisWycieczki: "Mega słaba wycieczka",
       rezerwacje: 0,
-      link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg"
+      link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg",
+      waluta: 'PLN'
     },
     {
       nazwa: "Wycieczka3",
@@ -83,7 +85,8 @@ function generateWycieczki() {
       maxIloscMiejsca: 27,
       opisWycieczki: "Mega dziwna wycieczka",
       rezerwacje: 0,
-      link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg"
+      link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg",
+      waluta: 'USD'
     }
     ,
     {
@@ -95,7 +98,8 @@ function generateWycieczki() {
       maxIloscMiejsca: 27,
       opisWycieczki: "Mega dziwna wycieczka",
       rezerwacje: 11,
-      link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg"
+      link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg",
+      waluta: 'PLN'
     }
   ]
 }
@@ -110,4 +114,5 @@ interface Wycieczka {
   opisWycieczki: string;
   link: string;
   rezerwacje: number;
+  waluta: string;
 }

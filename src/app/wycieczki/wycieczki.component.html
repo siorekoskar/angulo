@@ -6,7 +6,7 @@
             <li>
                 {{ wycieczka.nazwa | uppercase}}
                 {{wycieczka.docelowyKraj | uppercase}}
-                {{wycieczka.cenaJednostkowa}}
+                {{wycieczka.cenaJednostkowa | currency: wycieczka.waluta }}
                 <br>
                 Rezerwacje: <span [ngStyle]="{'background-color': wycieczka.rezerwacje < 10 ? 'red' : 'green'}">{{wycieczka.rezerwacje}}</span>
                 <br>
