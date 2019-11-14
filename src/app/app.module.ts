@@ -2,17 +2,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { HelloComponent } from './hello.component';
+import { FormsModule } from '@angular/forms';
+import { WycieczkiComponent } from './wycieczki/wycieczki.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    HelloComponent,
+    WycieczkiComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [WycieczkiComponent]
 })
-export class AppModule { }
+export class HelloModule { }
