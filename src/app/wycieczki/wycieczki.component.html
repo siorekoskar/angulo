@@ -1,3 +1,4 @@
+<app-naglowek></app-naglowek>
 <p>Wycieczki:</p>
 <ul>
     <span *ngFor="let wycieczka of wycieczki; index as i">
@@ -8,7 +9,8 @@
                 {{wycieczka.docelowyKraj | uppercase}}
                 {{wycieczka.cenaJednostkowa | currency: wycieczka.waluta }}
                 <br>
-                Rezerwacje: <span [ngStyle]="{'background-color': wycieczka.rezerwacje < 10 ? 'red' : 'green'}">{{wycieczka.rezerwacje}}</span>
+                Rezerwacje: <span
+                    [ngStyle]="{'background-color': wycieczka.rezerwacje < 10 ? 'red' : 'green'}">{{wycieczka.rezerwacje}}</span>
                 <br>
                 <img class="rounded-image" src="{{wycieczka.link}}"><br>
                 <button [ngStyle]="{'visibility': wycieczka.rezerwacje === 0? 'hidden' : 'visible'}"
