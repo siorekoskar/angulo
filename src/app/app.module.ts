@@ -6,12 +6,14 @@ import { HelloComponent } from './hello.component';
 import { FormsModule } from '@angular/forms';
 import { WycieczkiComponent } from './wycieczki/wycieczki.component';
 import { NaglowekComponent } from './naglowek/naglowek.component';
+import { WycieczkaComponent } from './wycieczka/wycieczka.component';
 
 @NgModule({
   declarations: [
     HelloComponent,
     WycieczkiComponent,
     NaglowekComponent,
+    WycieczkaComponent,
   ],
   imports: [
     BrowserModule,

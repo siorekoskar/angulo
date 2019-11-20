@@ -1,0 +1,17 @@
+.rounded-image {
+    border-radius: 50%;
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.low-places {
+    background-color: rebeccapurple;
+}
+
+.cheapest {
+    border: 5px solid red;
+}
+
+.expensive {
+    border: 5px solid green;
+}
