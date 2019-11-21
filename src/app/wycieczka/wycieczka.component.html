@@ -1,23 +1,37 @@
 <div
     [ngClass]="[wycieczka.maxIloscMiejsca - wycieczka.rezerwacje < 3 ? 'low-places' : '', isCheapest ? 'cheapest' : '', isMostExpensive ? 'expensive' : '']">
-        {{ wycieczka.nazwa | uppercase}}
-        {{wycieczka.docelowyKraj | uppercase}}
-        {{wycieczka.cenaJednostkowa | currency: wycieczka.waluta }}
-        <br>
-        Rezerwacje: <span
-            [ngStyle]="{'background-color': wycieczka.rezerwacje < 10 ? 'red' : 'green'}">{{wycieczka.rezerwacje}}</span>
-        <br>
-        <img class="rounded-image" src="{{wycieczka.link}}"><br>
-        <button [ngStyle]="{'visibility': wycieczka.rezerwacje === 0? 'hidden' : 'visible'}"
-            (click)="minusButton()">-</button>
-        <button [ngStyle]="{'visibility': wycieczka.maxIloscMiejsca === wycieczka.rezerwacje ? 'hidden' : 'visible'}"
-            (click)="plusButton()">+</button>
-        <br>
-        <button (click)="deleteTour()">Usun</button>
-        <br>
-        ilosc miejsca:
-        <span *ngIf="wycieczka.maxIloscMiejsca - wycieczka.rezerwacje === 0; else elseBlock">BRAK MIEJSCA</span>
-        <ng-template #elseBlock>wolne: {{wycieczka.maxIloscMiejsca - wycieczka.rezerwacje}}</ng-template>
-        <br><br><br>
+    {{ wycieczka.nazwa | uppercase}}
+    {{wycieczka.docelowyKraj | uppercase}}
+    {{wycieczka.cenaJednostkowa | currency: wycieczka.waluta }}
+    <br>
+    Rezerwacje: <span
+        [ngStyle]="{'background-color': wycieczka.rezerwacje < 10 ? 'red' : 'green'}">{{wycieczka.rezerwacje}}</span>
+    <br>
+    <img class="rounded-image" src="{{wycieczka.link}}"><br>
+    <button [ngStyle]="{'visibility': wycieczka.rezerwacje === 0? 'hidden' : 'visible'}"
+        (click)="minusButton()">-</button>
+    <button [ngStyle]="{'visibility': wycieczka.maxIloscMiejsca === wycieczka.rezerwacje ? 'hidden' : 'visible'}"
+        (click)="plusButton()">+</button>
+    <br>
+    <button (click)="deleteTour()">Usun</button>
+    <br>
+    ilosc miejsca:
+    <span *ngIf="wycieczka.maxIloscMiejsca - wycieczka.rezerwacje === 0; else elseBlock">BRAK MIEJSCA</span>
+    <ng-template #elseBlock>wolne: {{wycieczka.maxIloscMiejsca - wycieczka.rezerwacje}}</ng-template>
+    <br>
+    <div class="radio">
+        <label>
+            <input type="radio" name="review" value="1" (click)="setReview(1)">
+            1
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="review" value="2" (click)="setReview(2)">
+            2
+        </label>
+    </div>
+
+    <br><br>
 
 </div>

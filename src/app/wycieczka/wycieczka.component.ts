@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Wycieczka } from '../wycieczki/wycieczki.component';
+import { ReviewComponent } from '../review/review.component';
+import { Wycieczka } from '../wycieczka';
 
 @Component({
   selector: 'app-wycieczka',
@@ -13,6 +14,8 @@ export class WycieczkaComponent implements OnInit {
   @Input() isMostExpensive: boolean;
   @Output() signaledRemoved = new EventEmitter<number>();
   @Input() index: number;
+  review = new ReviewComponent();
+
   constructor() { }
 
   plusButton() {
@@ -22,6 +25,11 @@ export class WycieczkaComponent implements OnInit {
       console.log(this.wycieczka.rezerwacje);
     }
     console.log('dupa');
+  }
+
+  setReview(ocena: number) {
+    console.log(ocena);
+    this.review.review = ocena;
   }
 
   minusButton() {

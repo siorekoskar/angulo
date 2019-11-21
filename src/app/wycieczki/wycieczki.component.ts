@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { WycieczkaComponent } from '../wycieczka/wycieczka.component';
 import { ChangeDetectorRef } from '@angular/core';
+import { Wycieczka, WYCIECZKI } from '../wycieczka';
+import { ToursService } from './tours.service';
 
 
 @Component({
@@ -10,13 +12,18 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class WycieczkiComponent implements OnInit {
 
-  tours: Wycieczka[] = WYCIECZKI;
   @ViewChildren(WycieczkaComponent) wycieczki: QueryList<WycieczkaComponent>;
   cheapestIndex: number;
   expensiveIndex: number;
 
-  constructor(private cdRef:ChangeDetectorRef){
+  constructor(
+    private cdRef: ChangeDetectorRef,
+    private toursService: ToursService) {
     this.cdRef = cdRef;
+  }
+
+  getWycieczki() {
+    return this.toursService.getProducts();
   }
 
   cheapestIndexF(wycieczki: WycieczkaComponent[]) {
@@ -41,9 +48,7 @@ export class WycieczkiComponent implements OnInit {
 
   tourRemoved(index: number) {
     // let index = this.tours.indexOf(wycieczka);
-    this.tours.splice(index, 1);
-    this.wycieczki.toArray().splice(index, 1);
-    console.log(this.wycieczki);
+    this.toursService.deleteProduct(index);
   }
 
   ngOnInit() {
@@ -58,71 +63,4 @@ export class WycieczkiComponent implements OnInit {
     this.cdRef.detectChanges();
   }
 
-  
-
-}
-
-const WYCIECZKI = [
-    {
-      nazwa: "Wycieczka1",
-      docelowyKraj: "Niemcy",
-      dataRozpoczecia: "dzis",
-      dataZakonczenia: "jutro",
-      cenaJednostkowa: 50,
-      maxIloscMiejsca: 5,
-      opisWycieczki: "Mega dobra wycieczka",
-      rezerwacje: 0,
-      link: "http://tutorialspark.com/AngularJS/Angular.png",
-      waluta: 'EUR'
-    },
-    {
-      nazwa: "Wycieczka2",
-      docelowyKraj: "Hiszpania",
-      dataRozpoczecia: "jutro",
-      dataZakonczenia: "pojutrze",
-      cenaJednostkowa: 53,
-      maxIloscMiejsca: 2,
-      opisWycieczki: "Mega słaba wycieczka",
-      rezerwacje: 0,
-      link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg",
-      waluta: 'PLN'
-    },
-    {
-      nazwa: "Wycieczka3",
-      docelowyKraj: "Anglia",
-      dataRozpoczecia: "dzis",
-      dataZakonczenia: "jutro",
-      cenaJednostkowa: 12,
-      maxIloscMiejsca: 27,
-      opisWycieczki: "Mega dziwna wycieczka",
-      rezerwacje: 0,
-      link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg",
-      waluta: 'USD'
-    }
-    ,
-    {
-      nazwa: "Wycieczka4",
-      docelowyKraj: "Anglia",
-      dataRozpoczecia: "dzis",
-      dataZakonczenia: "jutro",
-      cenaJednostkowa: 13,
-      maxIloscMiejsca: 27,
-      opisWycieczki: "Mega dziwna wycieczka",
-      rezerwacje: 11,
-      link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg",
-      waluta: 'PLN'
-    }
-  ];
-
-export interface Wycieczka {
-  nazwa: string;
-  docelowyKraj: string;
-  dataRozpoczecia: string;
-  dataZakonczenia: string;
-  cenaJednostkowa: number;
-  maxIloscMiejsca: number;
-  opisWycieczki: string;
-  link: string;
-  rezerwacje: number;
-  waluta: string;
 }
