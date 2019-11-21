@@ -13,6 +13,8 @@
         <button [ngStyle]="{'visibility': wycieczka.maxIloscMiejsca === wycieczka.rezerwacje ? 'hidden' : 'visible'}"
             (click)="plusButton()">+</button>
         <br>
+        <button (click)="deleteTour()">Usun</button>
+        <br>
         ilosc miejsca:
         <span *ngIf="wycieczka.maxIloscMiejsca - wycieczka.rezerwacje === 0; else elseBlock">BRAK MIEJSCA</span>
         <ng-template #elseBlock>wolne: {{wycieczka.maxIloscMiejsca - wycieczka.rezerwacje}}</ng-template>

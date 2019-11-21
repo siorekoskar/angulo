@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Wycieczka } from '../wycieczki/wycieczki.component';
 
 @Component({
@@ -11,6 +11,8 @@ export class WycieczkaComponent implements OnInit {
   @Input() wycieczka: Wycieczka;
   @Input() isCheapest: boolean;
   @Input() isMostExpensive: boolean;
+  @Output() signaledRemoved = new EventEmitter<number>();
+  @Input() index: number;
   constructor() { }
 
   plusButton() {
@@ -43,6 +45,10 @@ export class WycieczkaComponent implements OnInit {
 
   getCena() {
     return this.wycieczka.cenaJednostkowa;
+  }
+
+  deleteTour(){
+    this.signaledRemoved.emit(this.index);
   }
 
   ngOnInit() {
