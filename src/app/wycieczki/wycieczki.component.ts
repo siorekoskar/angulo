@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { WycieczkaComponent } from '../wycieczka/wycieczka.component';
 import { ChangeDetectorRef } from '@angular/core';
-import { Wycieczka, WYCIECZKI } from '../wycieczka';
 import { ToursService } from './tours.service';
+import { Wycieczka } from '../wycieczka';
+import { BasketService } from '../basket/basket.service';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class WycieczkiComponent implements OnInit {
 
   constructor(
     private cdRef: ChangeDetectorRef,
-    private toursService: ToursService) {
+    private toursService: ToursService,
+    private basketService: BasketService) {
     this.cdRef = cdRef;
   }
 
@@ -55,8 +57,11 @@ export class WycieczkiComponent implements OnInit {
   }
 
   tourRemoved(index: number) {
-    // let index = this.tours.indexOf(wycieczka);
     this.toursService.deleteProduct(index);
+  }
+
+  tourAddedToBasket(tour: Wycieczka) {
+    this.basketService.addTour(tour);
   }
 
 

@@ -9,6 +9,7 @@ import { NaglowekComponent } from './naglowek/naglowek.component';
 import { WycieczkaComponent } from './wycieczka/wycieczka.component';
 import { ReviewComponent } from './review/review.component';
 import { NewTourComponent } from './new-tour/new-tour.component';
+import { BasketComponent } from './basket/basket.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NewTourComponent } from './new-tour/new-tour.component';
     WycieczkaComponent,
     ReviewComponent,
     NewTourComponent,
+    BasketComponent,
   ],
   imports: [
     BrowserModule,

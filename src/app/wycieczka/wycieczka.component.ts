@@ -13,6 +13,7 @@ export class WycieczkaComponent implements OnInit {
   @Input() isCheapest: boolean;
   @Input() isMostExpensive: boolean;
   @Output() signaledRemoved = new EventEmitter<number>();
+  @Output() tourAddedToBasket = new EventEmitter<Wycieczka>();
   @Input() index: number;
   review = new ReviewComponent();
 
@@ -57,6 +58,10 @@ export class WycieczkaComponent implements OnInit {
 
   deleteTour(){
     this.signaledRemoved.emit(this.index);
+  }
+
+  addTourToBasket() {
+    this.tourAddedToBasket.emit(this.wycieczka);
   }
 
   ngOnInit() {

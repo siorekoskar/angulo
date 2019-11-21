@@ -1,14 +1,14 @@
 <app-naglowek></app-naglowek>
 <div>
-    DODAJ WYCIECZKE!!
     <app-new-tour></app-new-tour>
+    <app-basket></app-basket>
 
 </div><br>
 <p>Wycieczki:</p>
 <ul>
     <li>
         <app-wycieczka *ngFor="let wycieczka of getWycieczki(); index as i" [wycieczka]=wycieczka [isCheapest]=false
-            [isMostExpensive]=false (signaledRemoved)=tourRemoved($event) [index]=i></app-wycieczka>
+            [isMostExpensive]=false (signaledRemoved)=tourRemoved($event) (tourAddedToBasket)=tourAddedToBasket($event) [index]=i></app-wycieczka>
     </li>
 </ul>
 <br>
