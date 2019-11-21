@@ -2,10 +2,10 @@
 <p>Wycieczki:</p>
 <ul>
     <li>
-        <app-wycieczka *ngFor="let wycieczka of generateWycieczki(); index as i" 
-        [wycieczka]='wycieczka'
-        [isCheapest] = 'i === cheapestIndexF()'
-        [isMostExpensive] = 'i === expensiveIndexF()'
+        <app-wycieczka *ngFor="let wycieczka of tours; index as i" 
+        [wycieczka] = wycieczka
+        [isCheapest] = false
+        [isMostExpensive] = false
         ></app-wycieczka>
     </li>
 </ul>

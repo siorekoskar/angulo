@@ -11,13 +11,15 @@ export class WycieczkaComponent implements OnInit {
   @Input() wycieczka: Wycieczka;
   @Input() isCheapest: boolean;
   @Input() isMostExpensive: boolean;
-
   constructor() { }
 
   plusButton() {
     if (this.isPlaceLeft()) {
+      console.log('dupa2');
       this.wycieczka.rezerwacje += 1;
+      console.log(this.wycieczka.rezerwacje);
     }
+    console.log('dupa');
   }
 
   minusButton() {
@@ -27,7 +29,12 @@ export class WycieczkaComponent implements OnInit {
   }
 
   isPlaceLeft(){
+    console.log(this.wycieczka.maxIloscMiejsca - this.wycieczka.rezerwacje > 0)
     return this.wycieczka.maxIloscMiejsca - this.wycieczka.rezerwacje > 0
+  }
+
+  getWycieczka(){
+    return this.wycieczka;
   }
 
   isFull() {
@@ -37,7 +44,6 @@ export class WycieczkaComponent implements OnInit {
   getCena() {
     return this.wycieczka.cenaJednostkowa;
   }
-
 
   ngOnInit() {
   }

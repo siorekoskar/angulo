@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { WycieczkaComponent } from '../wycieczka/wycieczka.component';
+import { ChangeDetectorRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-wycieczki',
@@ -8,13 +10,18 @@ import { WycieczkaComponent } from '../wycieczka/wycieczka.component';
 })
 export class WycieczkiComponent implements OnInit {
 
-  wycieczki: WycieczkaComponent[];
+  tours: Wycieczka[] = this.generateWycieczki();
+  @ViewChildren(WycieczkaComponent) wycieczki: QueryList<WycieczkaComponent>;
   cheapestIndex: number;
   expensiveIndex: number;
 
-  cheapestIndexF() {
+  constructor(private cdRef:ChangeDetectorRef){
+    this.cdRef = cdRef;
+  }
+
+  cheapestIndexF(wycieczki: WycieczkaComponent[]) {
     let oldInd = 0;
-    this.wycieczki.reduce((prev, curr, ind) => {
+    wycieczki.reduce((prev, curr, ind) => {
       let wycieczka = prev.getCena() < curr.getCena() ? prev : curr
       oldInd = prev.getCena() < curr.getCena() ? oldInd : ind;
       return wycieczka;
@@ -22,9 +29,9 @@ export class WycieczkiComponent implements OnInit {
     return oldInd;
   }
 
-  expensiveIndexF() {
+  expensiveIndexF(wycieczki: WycieczkaComponent[]) {
     let oldInd = 0;
-    this.wycieczki.reduce((prev, curr, ind) => {
+    wycieczki.reduce((prev, curr, ind) => {
       let wycieczka = prev.getCena() > curr.getCena() ? prev : curr
       oldInd = prev.getCena() > curr.getCena() ? oldInd : ind;
       return wycieczka;
@@ -32,9 +39,16 @@ export class WycieczkiComponent implements OnInit {
     return oldInd;
   }
 
-  constructor() { }
-
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    let wycieczki: WycieczkaComponent[] = this.wycieczki.toArray();
+    let expI = this.expensiveIndexF(wycieczki);
+    let cheapI = this.cheapestIndexF(wycieczki);
+    wycieczki[expI].isMostExpensive = true;
+    wycieczki[cheapI].isCheapest = true;
+    this.cdRef.detectChanges();
   }
 
   generateWycieczki() {
