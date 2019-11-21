@@ -11,6 +11,6 @@ export class ToursService {
   constructor() { }
   getProducts() { return this.tours; };
   getProduct(index: number) { return this.tours[index]; };
-  addProduct() { };
+  addProduct(tour: Wycieczka) { this.tours.push(tour) };
   deleteProduct(index: number) { this.tours.splice(index, 1); };
 }

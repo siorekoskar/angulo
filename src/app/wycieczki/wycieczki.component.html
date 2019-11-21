@@ -1,13 +1,14 @@
 <app-naglowek></app-naglowek>
+<div>
+    DODAJ WYCIECZKE!!
+    <app-new-tour></app-new-tour>
+
+</div><br>
 <p>Wycieczki:</p>
 <ul>
     <li>
-        <app-wycieczka *ngFor="let wycieczka of getWycieczki(); index as i" 
-        [wycieczka] = wycieczka
-        [isCheapest] = false
-        [isMostExpensive] = false
-        (signaledRemoved) = tourRemoved($event)
-        [index] = i
-        ></app-wycieczka>
+        <app-wycieczka *ngFor="let wycieczka of getWycieczki(); index as i" [wycieczka]=wycieczka [isCheapest]=false
+            [isMostExpensive]=false (signaledRemoved)=tourRemoved($event) [index]=i></app-wycieczka>
     </li>
 </ul>
+<br>

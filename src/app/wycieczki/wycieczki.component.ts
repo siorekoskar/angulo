@@ -22,8 +22,16 @@ export class WycieczkiComponent implements OnInit {
     this.cdRef = cdRef;
   }
 
+  ngOnInit() {
+    this.toursService.getProducts()
+  }
+
   getWycieczki() {
     return this.toursService.getProducts();
+  }
+
+  getProducts() {
+
   }
 
   cheapestIndexF(wycieczki: WycieczkaComponent[]) {
@@ -51,8 +59,6 @@ export class WycieczkiComponent implements OnInit {
     this.toursService.deleteProduct(index);
   }
 
-  ngOnInit() {
-  }
 
   ngAfterViewInit() {
     let wycieczki = this.wycieczki.toArray();
