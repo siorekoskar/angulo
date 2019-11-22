@@ -10,6 +10,8 @@ import { WycieczkaComponent } from './wycieczka/wycieczka.component';
 import { ReviewComponent } from './review/review.component';
 import { NewTourComponent } from './new-tour/new-tour.component';
 import { BasketComponent } from './basket/basket.component';
+import { BasketPreviewComponent } from './basket-preview/basket-preview.component';
+import { BasketElementComponent } from './basket-element/basket-element.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { BasketComponent } from './basket/basket.component';
     ReviewComponent,
     NewTourComponent,
     BasketComponent,
+    BasketPreviewComponent,
+    BasketElementComponent,
   ],
   imports: [
     BrowserModule,

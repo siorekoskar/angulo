@@ -22,12 +22,10 @@ export class WycieczkaComponent implements OnInit {
   plusButton() {
     if (this.isPlaceLeft()) {
       this.wycieczka.rezerwacje += 1;
-      console.log(this.wycieczka.rezerwacje);
     }
   }
 
   setReview(ocena: number) {
-    console.log(ocena);
     this.review.review = ocena;
   }
 
@@ -38,7 +36,6 @@ export class WycieczkaComponent implements OnInit {
   }
 
   isPlaceLeft(){
-    console.log(this.wycieczka.maxIloscMiejsca - this.wycieczka.rezerwacje > 0)
     return this.wycieczka.maxIloscMiejsca - this.wycieczka.rezerwacje > 0
   }
 
