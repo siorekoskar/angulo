@@ -28,6 +28,6 @@ import { BasketComponent } from './basket/basket.component';
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [WycieczkiComponent]
+  bootstrap: [HelloComponent]
 })
 export class HelloModule { }

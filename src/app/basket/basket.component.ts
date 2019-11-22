@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Wycieczka } from '../wycieczka';
 import { BasketService } from './basket.service';
 
 @Component({

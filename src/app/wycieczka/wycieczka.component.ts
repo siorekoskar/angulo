@@ -21,11 +21,9 @@ export class WycieczkaComponent implements OnInit {
 
   plusButton() {
     if (this.isPlaceLeft()) {
-      console.log('dupa2');
       this.wycieczka.rezerwacje += 1;
       console.log(this.wycieczka.rezerwacje);
     }
-    console.log('dupa');
   }
 
   setReview(ocena: number) {
