@@ -15,7 +15,6 @@ export class WycieczkaComponent implements OnInit {
   @Output() signaledRemoved = new EventEmitter<number>();
   @Output() tourAddedToBasket = new EventEmitter<Wycieczka>();
   @Input() index: number;
-  review = new ReviewComponent();
 
   constructor() { }
 
@@ -23,10 +22,6 @@ export class WycieczkaComponent implements OnInit {
     if (this.isPlaceLeft()) {
       this.wycieczka.rezerwacje += 1;
     }
-  }
-
-  setReview(ocena: number) {
-    this.review.review = ocena;
   }
 
   minusButton() {

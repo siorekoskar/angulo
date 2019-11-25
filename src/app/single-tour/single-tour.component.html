@@ -8,4 +8,18 @@
 <img class="rounded-image" src="{{tour.link}}"><br>
 {{tour.rezerwacje}}<br>
 {{tour.waluta}}<br>
-<a *ngIf='isInBasket'>Wycieczka juz w koszyku</a><br>
+<a *ngIf='isInBasket'>Wycieczka juz w koszyku<br>
+    Ocena:
+    <div class="radio">
+        <label>
+            <input type="radio" name="review" value="1" (click)="setReview(1)">
+            1
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="review" value="2" (click)="setReview(2)">
+            2
+        </label>
+    </div>
+</a>

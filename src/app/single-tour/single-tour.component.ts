@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { ToursService } from '../wycieczki/tours.service';
 import { Wycieczka } from '../wycieczka';
 import { BasketService } from '../basket/basket.service';
+import { ReviewComponent } from '../review/review.component';
 
 @Component({
   selector: 'app-single-tour',
@@ -14,6 +15,7 @@ export class SingleTourComponent implements OnInit {
   index: number;
   tour: Wycieczka;
   isInBasket: boolean;
+  review = new ReviewComponent();
 
   constructor(
     private route: ActivatedRoute,
@@ -26,4 +28,7 @@ export class SingleTourComponent implements OnInit {
     this.isInBasket = this.basketService.toursChosen.includes(this.tour);
   }
 
+  setReview(ocena: number) {
+    this.review.review = ocena;
+  }
 }

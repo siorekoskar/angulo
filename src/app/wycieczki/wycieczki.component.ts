@@ -13,6 +13,8 @@ import { BasketService } from '../basket/basket.service';
 })
 export class WycieczkiComponent implements OnInit {
 
+  tours: Wycieczka[];
+
   @ViewChildren(WycieczkaComponent) wycieczki: QueryList<WycieczkaComponent>;
   cheapestIndex: number;
   expensiveIndex: number;
@@ -25,7 +27,7 @@ export class WycieczkiComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.toursService.getProducts()
+    this.tours = this.toursService.getProducts()
   }
 
   getWycieczki() {
