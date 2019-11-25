@@ -12,6 +12,8 @@ import { NewTourComponent } from './new-tour/new-tour.component';
 import { BasketComponent } from './basket/basket.component';
 import { BasketPreviewComponent } from './basket-preview/basket-preview.component';
 import { BasketElementComponent } from './basket-element/basket-element.component';
+import { SingleTourComponent } from './single-tour/single-tour.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { BasketElementComponent } from './basket-element/basket-element.componen
     BasketComponent,
     BasketPreviewComponent,
     BasketElementComponent,
+    SingleTourComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

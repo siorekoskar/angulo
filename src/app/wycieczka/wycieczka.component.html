@@ -7,7 +7,7 @@
     Rezerwacje: <span
         [ngStyle]="{'background-color': wycieczka.rezerwacje < 10 ? 'red' : 'green'}">{{wycieczka.rezerwacje}}</span>
     <br>
-    <img class="rounded-image" src="{{wycieczka.link}}"><br>
+    <a [routerLink]="['/tours/', this.index]"><img class="rounded-image" src="{{wycieczka.link}}"><br></a>
     <button [ngStyle]="{'visibility': wycieczka.rezerwacje === 0? 'hidden' : 'visible'}"
         (click)="minusButton()">-</button>
     <button [ngStyle]="{'visibility': wycieczka.maxIloscMiejsca === wycieczka.rezerwacje ? 'hidden' : 'visible'}"

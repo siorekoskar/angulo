@@ -59,6 +59,10 @@ export class WycieczkaComponent implements OnInit {
     this.tourAddedToBasket.emit(this.wycieczka);
   }
 
+  imageClicked() {
+    return this.index;
+  }
+
   ngOnInit() {
   }
 
