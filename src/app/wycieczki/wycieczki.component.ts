@@ -67,15 +67,17 @@ export class WycieczkiComponent implements OnInit {
 
   tourRemoved(index: number) {
     this.toursService.deleteProduct(index).subscribe(() => {
-      console.log(index);
       this.update.next(true);
     })
+  }
+
+  newTourAdded(){
+    this.update.next(true);
   }
 
   tourAddedToBasket(tour: Wycieczka) {
     this.basketService.addTour(tour);
   }
-
 
   ngAfterViewInit() {
     // let wycieczki = this.wycieczkwi.toArray();

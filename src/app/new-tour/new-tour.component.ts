@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { ToursService } from '../wycieczki/tours.service';
+import { Wycieczka } from '../wycieczka';
 
 @Component({
   selector: 'app-new-tour',
@@ -10,6 +11,7 @@ import { ToursService } from '../wycieczki/tours.service';
 export class NewTourComponent implements OnInit {
 
   modelForm: FormGroup;
+  @Output() newTourPosted = new EventEmitter<Wycieczka>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,7 +32,10 @@ export class NewTourComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.toursService.addProduct(this.modelForm.value);
+    console.log(this.modelForm.value);
+    this.toursService.addProduct(this.modelForm.value).then(result => {
+      this.newTourPosted.emit();
+    })
     this.modelForm.reset();
   };
 

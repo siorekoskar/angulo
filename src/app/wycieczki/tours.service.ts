@@ -14,16 +14,22 @@ export class ToursService {
   tours: Wycieczka[] = WYCIECZKI;
 
   constructor(private http: HttpClient) { }
+
   getProducts(): Observable<Wycieczka[]> {
     return this.http.get<Wycieczka[]>(this.toursApiUrl).pipe(map(response => response.data));
   };
+
   getProduct(index: number): Promise<Wycieczka> {
     return this.http.get<Wycieczka>(`${this.toursApiUrl}/${index}`).toPromise().then(response => response.data);
   };
 
-  addProduct(tour: Wycieczka): Observable<Wycieczka> {
-    return this.http.post<Wycieczka>(this.toursApiUrl, tour);
+  addProduct(tour: Wycieczka): Promise<Wycieczka> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.post<Wycieczka>(this.toursApiUrl, tour, httpOptions).toPromise().then(response => response.data);
   };
+
   deleteProduct(tour: Wycieczka | number): Observable<Wycieczka> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
