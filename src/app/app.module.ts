@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 
 import { AppRoutingModule } from './app-routing.module';
 import { HelloComponent } from './hello.component';
@@ -14,6 +16,7 @@ import { BasketPreviewComponent } from './basket-preview/basket-preview.componen
 import { BasketElementComponent } from './basket-element/basket-element.component';
 import { SingleTourComponent } from './single-tour/single-tour.component';
 import { LoginComponent } from './login/login.component';
+import { InMemoryToursDataService } from './in-memory-data/in-memory-tours-data.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,11 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryToursDataService, { dataEncapsulation: true }
+    )
   ],
   providers: [],
   bootstrap: [HelloComponent]

@@ -24,7 +24,7 @@ export class SingleTourComponent implements OnInit {
 
   ngOnInit() {
     this.index = Number(this.route.snapshot.paramMap.get("id"));
-    this.tour = this.toursService.getProduct(this.index);
+    this.toursService.getProduct(this.index).subscribe(tour => this.tour = tour);
     this.isInBasket = this.basketService.toursChosen.includes(this.tour);
   }
 

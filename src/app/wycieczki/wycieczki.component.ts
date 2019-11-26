@@ -27,7 +27,9 @@ export class WycieczkiComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tours = this.toursService.getProducts()
+    this.toursService.getProducts().subscribe(
+      tours => this.tours = tours
+    );
   }
 
   getWycieczki() {
@@ -39,23 +41,25 @@ export class WycieczkiComponent implements OnInit {
   }
 
   cheapestIndexF(wycieczki: WycieczkaComponent[]) {
-    let oldInd = 0;
-    wycieczki.reduce((prev, curr, ind) => {
-      let wycieczka = prev.getCena() < curr.getCena() ? prev : curr
-      oldInd = prev.getCena() < curr.getCena() ? oldInd : ind;
-      return wycieczka;
-    })
-    return oldInd;
+    // let oldInd = 0;
+    // wycieczki.reduce((prev, curr, ind) => {
+    //   let wycieczka = prev.getCena() < curr.getCena() ? prev : curr
+    //   oldInd = prev.getCena() < curr.getCena() ? oldInd : ind;
+    //   return wycieczka;
+    // })
+    // return oldInd;
+    return 1;
   }
 
   expensiveIndexF(wycieczki: WycieczkaComponent[]) {
-    let oldInd = 0;
-    wycieczki.reduce((prev, curr, ind) => {
-      let wycieczka = prev.getCena() > curr.getCena() ? prev : curr
-      oldInd = prev.getCena() > curr.getCena() ? oldInd : ind;
-      return wycieczka;
-    })
-    return oldInd;
+    // let oldInd = 0;
+    // wycieczki.reduce((prev, curr, ind) => {
+    //   let wycieczka = prev.getCena() > curr.getCena() ? prev : curr
+    //   oldInd = prev.getCena() > curr.getCena() ? oldInd : ind;
+    //   return wycieczka;
+    // })
+    // return oldInd;
+    return 2;
   }
 
   tourRemoved(index: number) {
@@ -68,12 +72,12 @@ export class WycieczkiComponent implements OnInit {
 
 
   ngAfterViewInit() {
-    let wycieczki = this.wycieczki.toArray();
-    let expI = this.expensiveIndexF(wycieczki);
-    let cheapI = this.cheapestIndexF(wycieczki);
-    wycieczki[expI].isMostExpensive = true;
-    wycieczki[cheapI].isCheapest = true;
-    this.cdRef.detectChanges();
+    // let wycieczki = this.wycieczki.toArray();
+    // let expI = this.expensiveIndexF(wycieczki);
+    // let cheapI = this.cheapestIndexF(wycieczki);
+    // wycieczki[expI].isMostExpensive = true;
+    // wycieczki[cheapI].isCheapest = true;
+    // this.cdRef.detectChanges();
   }
 
 }

@@ -10,6 +10,7 @@ export interface Wycieczka {
     link: string;
     rezerwacje: number;
     waluta: string;
+    id: number;
 }
 
 export const WYCIECZKI = [
@@ -23,7 +24,8 @@ export const WYCIECZKI = [
         opisWycieczki: "Mega dobra wycieczka",
         rezerwacje: 0,
         link: "http://tutorialspark.com/AngularJS/Angular.png",
-        waluta: 'EUR'
+        waluta: 'EUR',
+        id: 1
     },
     {
         nazwa: "Wycieczka2",
@@ -35,7 +37,8 @@ export const WYCIECZKI = [
         opisWycieczki: "Mega słaba wycieczka",
         rezerwacje: 0,
         link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg",
-        waluta: 'PLN'
+        waluta: 'PLN',
+        id: 2
     },
     {
         nazwa: "Wycieczka3",
@@ -47,7 +50,8 @@ export const WYCIECZKI = [
         opisWycieczki: "Mega dziwna wycieczka",
         rezerwacje: 0,
         link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg",
-        waluta: 'USD'
+        waluta: 'USD',
+        id: 3
     }
     ,
     {
@@ -60,6 +64,7 @@ export const WYCIECZKI = [
         opisWycieczki: "Mega dziwna wycieczka",
         rezerwacje: 11,
         link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg",
-        waluta: 'PLN'
+        waluta: 'PLN',
+        id: 4
     }
 ];
