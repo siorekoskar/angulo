@@ -6,8 +6,9 @@
 <p>Wycieczki:</p>
 <ul>
     <li>
-        <app-wycieczka *ngFor="let wycieczka of tours; index as i" [wycieczka]=wycieczka [isCheapest]=false
-            [isMostExpensive]=false (signaledRemoved)=tourRemoved($event) (tourAddedToBasket)=tourAddedToBasket($event) [index]=i></app-wycieczka>
+        <app-wycieczka *ngFor="let wycieczka of tours" [wycieczka]=wycieczka [isCheapest]=false [isMostExpensive]=false
+            (signaledRemoved)=tourRemoved($event) (tourAddedToBasket)=tourAddedToBasket($event) [index]=wycieczka.id>
+        </app-wycieczka>
     </li>
 </ul>
 <br>

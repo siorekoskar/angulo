@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { WYCIECZKI, Wycieczka } from '../wycieczka';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -24,8 +24,12 @@ export class ToursService {
   addProduct(tour: Wycieczka): Observable<Wycieczka> {
     return this.http.post<Wycieczka>(this.toursApiUrl, tour);
   };
-  deleteProduct(index: number): Observable<Wycieczka> {
-    return this.http.delete<Wycieczka>(`${this.toursApiUrl}/${index}`);
+  deleteProduct(tour: Wycieczka | number): Observable<Wycieczka> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    const id = typeof tour === 'number' ? tour : tour.id;
+    return this.http.delete<Wycieczka>(`${this.toursApiUrl}/${id}`, httpOptions);
     // this.tours.splice(index, 1);
   };
 }

@@ -4,6 +4,7 @@ import { ChangeDetectorRef } from '@angular/core';
 import { ToursService } from './tours.service';
 import { Wycieczka } from '../wycieczka';
 import { BasketService } from '../basket/basket.service';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { BasketService } from '../basket/basket.service';
 export class WycieczkiComponent implements OnInit {
 
   tours: Wycieczka[];
+  update = new BehaviorSubject<boolean>(false);
 
   @ViewChildren(WycieczkaComponent) wycieczki: QueryList<WycieczkaComponent>;
   cheapestIndex: number;
@@ -27,13 +29,14 @@ export class WycieczkiComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.refreshTours();
+    this.update.subscribe(update => update === true ? this.refreshTours() : '');
+  }
+
+  refreshTours() {
     this.toursService.getProducts().subscribe(
       tours => this.tours = tours
     );
-  }
-
-  getWycieczki() {
-    return this.toursService.getProducts();
   }
 
   getProducts() {
@@ -63,7 +66,10 @@ export class WycieczkiComponent implements OnInit {
   }
 
   tourRemoved(index: number) {
-    this.toursService.deleteProduct(index);
+    this.toursService.deleteProduct(index).subscribe(() => {
+      console.log(index);
+      this.update.next(true);
+    })
   }
 
   tourAddedToBasket(tour: Wycieczka) {
@@ -72,7 +78,7 @@ export class WycieczkiComponent implements OnInit {
 
 
   ngAfterViewInit() {
-    // let wycieczki = this.wycieczki.toArray();
+    // let wycieczki = this.wycieczkwi.toArray();
     // let expI = this.expensiveIndexF(wycieczki);
     // let cheapI = this.cheapestIndexF(wycieczki);
     // wycieczki[expI].isMostExpensive = true;
