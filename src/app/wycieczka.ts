@@ -25,7 +25,7 @@ export const WYCIECZKI = [
         rezerwacje: 0,
         link: "http://tutorialspark.com/AngularJS/Angular.png",
         waluta: 'EUR',
-        id: 1
+        id: 0
     },
     {
         nazwa: "Wycieczka2",
@@ -38,7 +38,7 @@ export const WYCIECZKI = [
         rezerwacje: 0,
         link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg",
         waluta: 'PLN',
-        id: 2
+        id: 1
     },
     {
         nazwa: "Wycieczka3",
@@ -51,7 +51,7 @@ export const WYCIECZKI = [
         rezerwacje: 0,
         link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg",
         waluta: 'USD',
-        id: 3
+        id: 2
     }
     ,
     {
@@ -65,6 +65,6 @@ export const WYCIECZKI = [
         rezerwacje: 11,
         link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg",
         waluta: 'PLN',
-        id: 4
+        id: 3
     }
 ];

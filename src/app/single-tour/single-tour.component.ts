@@ -14,7 +14,7 @@ export class SingleTourComponent implements OnInit {
 
   index: number;
   tour: Wycieczka;
-  isInBasket: boolean;
+  isInBasket: boolean = false;
   review = new ReviewComponent();
 
   constructor(
@@ -24,8 +24,10 @@ export class SingleTourComponent implements OnInit {
 
   ngOnInit() {
     this.index = Number(this.route.snapshot.paramMap.get("id"));
-    this.toursService.getProduct(this.index).subscribe(tour => this.tour = tour);
-    this.isInBasket = this.basketService.toursChosen.includes(this.tour);
+    this.toursService.getProduct(this.index).then(tour => {
+      this.tour = tour;
+    });
+    // this.isInBasket = this.basketService.toursChosen.includes(this.tour);
   }
 
   setReview(ocena: number) {

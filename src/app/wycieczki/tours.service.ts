@@ -15,10 +15,10 @@ export class ToursService {
 
   constructor(private http: HttpClient) { }
   getProducts(): Observable<Wycieczka[]> {
-    return this.http.get<Wycieczka[]>(this.toursApiUrl).pipe(map(response => {return response.data}));
+    return this.http.get<Wycieczka[]>(this.toursApiUrl).pipe(map(response => response.data));
   };
-  getProduct(index: number): Observable<Wycieczka> {
-    return this.http.get<Wycieczka>(`${this.toursApiUrl}/${index}`);
+  getProduct(index: number): Promise<Wycieczka> {
+    return this.http.get<Wycieczka>(`${this.toursApiUrl}/${index}`).toPromise().then(response => response.data);
   };
 
   addProduct(tour: Wycieczka): Observable<Wycieczka> {
