@@ -1,14 +1,42 @@
 DODAJ WYCIECZKE!!
 <form [formGroup]="modelForm" (ngSubmit)="onSubmit()">
-    <label>nazwa:</label><input name="nazwa" formControlName="nazwa"><br>
-    <label>docelowyKraj:</label><input name="docelowyKraj" formControlName="dataRozpoczecia"><br>
-    <label>dataRozpoczecia:</label><input name="dataRozpoczecia" formControlName="dataRozpoczecia"><br>
-    <label>dataZakonczenia:</label><input name="dataZakonczenia" formControlName="dataZakonczenia"><br>
-    <label>maxIloscMiejsca:</label><input name="maxIloscMiejsca" formControlName="maxIloscMiejsca"><br>
-    <label>opisWycieczki:</label><input name="opisWycieczki" formControlName="opisWycieczki"><br>
-    <label>link:</label><input name="link" formControlName="link"><br>
-    <label>rezerwacje:</label><input name="rezerwacje" formControlName="rezerwacje"><br>
-    <label>waluta:</label><input name="waluta" formControlName="waluta"><br>
-
-    <button type="submit">Send</button>
+    <div class="form-group">
+        <div class="row">
+            <label class="col-sm-2">Nazwa:</label>
+            <input name="nazwa" class="form-control col-sm-10" formControlName="nazwa"><br>
+        </div>
+        <div class="row">
+            <label class="col-sm-2">Docelowy kraj:</label>
+            <input name="docelowyKraj" class="form-control col-sm-10" formControlName="docelowyKraj"><br>
+        </div>
+        <div class="row">
+            <label class="col-sm-2">Data rozpoczecia:</label>
+            <input name="dataRozpoczecia" class="form-control col-sm-10" formControlName="dataRozpoczecia"><br>
+        </div>
+        <div class="row">
+            <label class="col-sm-2">Data zakonczenia:</label>
+            <input name="dataZakonczenia" class="form-control col-sm-10" formControlName="dataZakonczenia"><br>
+        </div>
+        <div class="row">
+            <label class="col-sm-2">Max ilosc miejsca:</label>
+            <input name="maxIloscMiejsca" class="form-control col-sm-10" formControlName="maxIloscMiejsca"><br>
+        </div>
+        <div class="row">
+            <label class="col-sm-2">Opis wycieczki:</label>
+            <input name="opisWycieczki" class="form-control col-sm-10" formControlName="opisWycieczki"><br>
+        </div>
+        <div class="row">
+            <label class="col-sm-2">Link:</label>
+            <input name="link" class="form-control col-sm-10" formControlName="link"><br>
+        </div>
+        <div class="row">
+            <label class="col-sm-2">Rezerwacje:</label>
+            <input name="rezerwacje" class="form-control col-sm-10" formControlName="rezerwacje"><br>
+        </div>
+        <div class="row">
+            <label class="col-sm-2">Waluta:</label>
+            <input name="waluta" class="form-control col-sm-10" formControlName="waluta"><br>
+        </div>
+        <button type="submit">Send</button>
+    </div>
 </form>
