@@ -1,13 +1,14 @@
-{{tour.nazwa}}<br>
-{{tour.docelowyKraj}}<br>
-{{tour.dataRozpoczecia}}<br>
-{{tour.dataZakonczenia}}<br>
-{{tour.cenaJednostkowa}}<br>
-{{tour.maxIloscMiejsca}}<br>
-{{tour.opisWycieczki}}<br>
-<img class="rounded-image" src="{{tour.link}}"><br>
-{{tour.rezerwacje}}<br>
-{{tour.waluta}}<br>
+<a *ngIf='tour'>
+    {{tour.nazwa}}<br>
+    {{tour.docelowyKraj}}<br>
+    {{tour.dataRozpoczecia}}<br>
+    {{tour.dataZakonczenia}}<br>
+    {{tour.cenaJednostkowa}}<br>
+    {{tour.maxIloscMiejsca}}<br>
+    {{tour.opisWycieczki}}<br>
+    <img class="rounded-image" src="{{tour.link}}"><br>
+    {{tour.rezerwacje}}<br>
+    {{tour.waluta}}<br>
 <a *ngIf='isInBasket'>Wycieczka juz w koszyku<br>
     Ocena:
     <div class="radio">
@@ -22,4 +23,5 @@
             2
         </label>
     </div>
+</a>
 </a>

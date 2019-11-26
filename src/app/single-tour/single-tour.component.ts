@@ -14,7 +14,7 @@ export class SingleTourComponent implements OnInit {
 
   index: number;
   tour: Wycieczka;
-  isInBasket: boolean = false;
+  isInBasket: boolean;
   review = new ReviewComponent();
 
   constructor(
@@ -26,8 +26,8 @@ export class SingleTourComponent implements OnInit {
     this.index = Number(this.route.snapshot.paramMap.get("id"));
     this.toursService.getProduct(this.index).then(tour => {
       this.tour = tour;
+      this.isInBasket = this.basketService.toursChosen.some(tour => tour.id === this.index);
     });
-    // this.isInBasket = this.basketService.toursChosen.includes(this.tour);
   }
 
   setReview(ocena: number) {
