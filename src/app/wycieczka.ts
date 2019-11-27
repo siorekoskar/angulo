@@ -23,7 +23,7 @@ export const WYCIECZKI = [
         maxIloscMiejsca: 5,
         opisWycieczki: "Mega dobra wycieczka",
         rezerwacje: 0,
-        link: "http://tutorialspark.com/AngularJS/Angular.png",
+        link: "https://s0.dziennik.pl/pliki/10562000/10562866-niemcy-900-600.jpg",
         waluta: 'EUR',
         id: 0
     },
@@ -36,7 +36,7 @@ export const WYCIECZKI = [
         maxIloscMiejsca: 2,
         opisWycieczki: "Mega słaba wycieczka",
         rezerwacje: 0,
-        link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg",
+        link: "https://f4fcdn.eu/wp-content/uploads/2019/06/Hiszpania2000ST.jpg",
         waluta: 'PLN',
         id: 1
     },
@@ -49,7 +49,7 @@ export const WYCIECZKI = [
         maxIloscMiejsca: 27,
         opisWycieczki: "Mega dziwna wycieczka",
         rezerwacje: 0,
-        link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg",
+        link: "https://ocdn.eu/pulscms-transforms/1/e5kktkqTURBXy8zMjVlODRjZDQxN2E0NmViMzI3ZGE2ZTkxODk0MzI0Yi5qcGVnkpUDAADNCcXNBX-TBc0DUs0B3g",
         waluta: 'USD',
         id: 2
     }
@@ -63,7 +63,7 @@ export const WYCIECZKI = [
         maxIloscMiejsca: 27,
         opisWycieczki: "Mega dziwna wycieczka",
         rezerwacje: 11,
-        link: "http://www.maximkrynica.pl/Wycieczka-objazdowa-Inne-Inne-Bawarskie-sanktuaria-zamki-9-dni,2647,520,1,sph.jpg",
+        link: "https://ocdn.eu/pulscms-transforms/1/e5kktkqTURBXy8zMjVlODRjZDQxN2E0NmViMzI3ZGE2ZTkxODk0MzI0Yi5qcGVnkpUDAADNCcXNBX-TBc0DUs0B3g",
         waluta: 'PLN',
         id: 3
     }

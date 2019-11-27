@@ -1,13 +1,13 @@
 <div
     [ngClass]="[wycieczka.maxIloscMiejsca - wycieczka.rezerwacje < 3 ? 'low-places' : '', isCheapest ? 'cheapest' : '', isMostExpensive ? 'expensive' : '']">
-    {{ wycieczka.nazwa | uppercase}}
+    <h2>{{ wycieczka.nazwa | uppercase}}</h2>
     {{wycieczka.docelowyKraj | uppercase}}
     {{wycieczka.cenaJednostkowa | currency: wycieczka.waluta }}
     <br>
     Rezerwacje: <span
         [ngStyle]="{'background-color': wycieczka.rezerwacje < 10 ? 'red' : 'green'}">{{wycieczka.rezerwacje}}</span>
     <br>
-    <a [routerLink]="['/tours/', this.index]"><img class="rounded-image" src="{{wycieczka.link}}"><br></a>
+    <a [routerLink]="['/tours/', this.index]"><img class="rounded img-fluid img-thumbnail" src="{{wycieczka.link}}"><br></a>
     <button class="btn btn-primary" [ngStyle]="{'visibility': wycieczka.rezerwacje === 0? 'hidden' : 'visible'}"
         (click)="minusButton()">-</button>
     <button class="btn btn-primary" [ngStyle]="{'visibility': wycieczka.maxIloscMiejsca === wycieczka.rezerwacje ? 'hidden' : 'visible'}"
