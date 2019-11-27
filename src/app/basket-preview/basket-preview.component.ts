@@ -15,7 +15,7 @@ export class BasketPreviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tours = this.basketService.toursChosen;
+    this.tours = this.basketService.toursChosen.map(tour => tour.tour);
   }
 
 }

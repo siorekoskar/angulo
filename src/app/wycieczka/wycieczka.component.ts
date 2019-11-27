@@ -13,20 +13,23 @@ export class WycieczkaComponent implements OnInit {
   @Input() isCheapest: boolean;
   @Input() isMostExpensive: boolean;
   @Output() signaledRemoved = new EventEmitter<number>();
-  @Output() tourAddedToBasket = new EventEmitter<Wycieczka>();
+  @Output() tourAddedToBasket = new EventEmitter<{tour: Wycieczka, reservedTours: number}>();
   @Input() index: number;
+  reservedTours: number = 0;
 
   constructor() { }
 
   plusButton() {
     if (this.isPlaceLeft()) {
       this.wycieczka.rezerwacje += 1;
+      this.reservedTours += 1;
     }
   }
 
   minusButton() {
     if (this.isFull()) {
       this.wycieczka.rezerwacje -= 1;
+      this.reservedTours -= 1;
     }
   }
 
@@ -51,7 +54,8 @@ export class WycieczkaComponent implements OnInit {
   }
 
   addTourToBasket() {
-    this.tourAddedToBasket.emit(this.wycieczka);
+    this.tourAddedToBasket.emit({tour: this.wycieczka, reservedTours: this.reservedTours});
+    this.reservedTours = 0;
   }
 
   imageClicked() {

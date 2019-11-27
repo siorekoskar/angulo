@@ -71,8 +71,8 @@ export class WycieczkiComponent implements OnInit {
     })
   }
 
-  tourAddedToBasket(tour: Wycieczka) {
-    this.basketService.addTour(tour);
+  tourAddedToBasket(event) {
+    this.basketService.addTour(event);
   }
 
   ngAfterViewInit() {

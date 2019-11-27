@@ -26,7 +26,7 @@ export class SingleTourComponent implements OnInit {
     this.index = Number(this.route.snapshot.paramMap.get("id"));
     this.toursService.getProduct(this.index).then(tour => {
       this.tour = tour;
-      this.isInBasket = this.basketService.toursChosen.some(tour => tour.id === this.index);
+      this.isInBasket = this.basketService.toursChosen.some(tour => tour.tour.id === this.index);
     });
   }
 
