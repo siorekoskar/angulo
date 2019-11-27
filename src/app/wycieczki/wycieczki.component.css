@@ -1,8 +1,9 @@
 .tour {
-    margin:5px;
     min-width: 250px;
+    padding-bottom: 15px;
+    padding-top: 15px;
 }
 
-.pagination {
-    justify-content: center;
- }
+.number-page {
+    filter: brightness(94%);
+}

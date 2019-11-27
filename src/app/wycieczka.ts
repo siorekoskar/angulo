@@ -63,7 +63,7 @@ export const WYCIECZKI = [
         maxIloscMiejsca: 27,
         opisWycieczki: "Mega dziwna wycieczka",
         rezerwacje: 11,
-        link: "https://ocdn.eu/pulscms-transforms/1/e5kktkqTURBXy8zMjVlODRjZDQxN2E0NmViMzI3ZGE2ZTkxODk0MzI0Yi5qcGVnkpUDAADNCcXNBX-TBc0DUs0B3g",
+        link: "https://www.yachting.com/getattachment/96e526f0-551a-43f3-8b28-5bea08f8cbbb/hiszpania.aspx?width=750",
         waluta: 'PLN',
         id: 3
     }
