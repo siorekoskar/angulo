@@ -71,10 +71,6 @@ export class WycieczkiComponent implements OnInit {
     })
   }
 
-  newTourAdded(){
-    this.update.next(true);
-  }
-
   tourAddedToBasket(tour: Wycieczka) {
     this.basketService.addTour(tour);
   }

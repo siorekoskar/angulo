@@ -11,7 +11,6 @@ import { Wycieczka } from '../wycieczka';
 export class NewTourComponent implements OnInit {
 
   modelForm: FormGroup;
-  @Output() newTourPosted = new EventEmitter<Wycieczka>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,7 +33,6 @@ export class NewTourComponent implements OnInit {
   onSubmit(): void {
     console.log(this.modelForm.value);
     this.toursService.addProduct(this.modelForm.value).then(result => {
-      this.newTourPosted.emit();
     })
     this.modelForm.reset();
   };
