@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <h1>Wycieczki:</h1>
                 <div class="row">
-                    <app-wycieczka class="col-sm-3" *ngFor="let wycieczka of tours" [wycieczka]=wycieczka
+                    <app-wycieczka class="col jumbotron tour" *ngFor="let wycieczka of tours" [wycieczka]=wycieczka
                         [isCheapest]=false [isMostExpensive]=false (signaledRemoved)=tourRemoved($event)
                         (tourAddedToBasket)=tourAddedToBasket($event) [index]=wycieczka.id>
                     </app-wycieczka>
