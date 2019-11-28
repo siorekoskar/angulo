@@ -26,7 +26,8 @@ export class NewTourComponent implements OnInit {
       opisWycieczki: '',
       link: '',
       rezerwacje: '',
-      waluta: ''
+      waluta: '',
+      photos: []
     });
   }
 

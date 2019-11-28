@@ -1,0 +1,16 @@
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+
+.background-cover {
+    background-image: url('https://s0.dziennik.pl/pliki/10562000/10562866-niemcy-900-600.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.txtshd {
+    text-shadow: 1px 1px 1px black;
+}

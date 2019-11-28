@@ -1,3 +1,30 @@
+<div>
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <ul class="carousel-indicators">
+            <div *ngFor="let photo of tour.photos ; index as i">
+                <li data-target="#demo" data-slide-to="i"> </li>
+            </div>
+        </ul>
+        <div class="carousel-inner">
+            <div class="carousel-item" [ngClass]="[i === 0 ? 'active' : '']"
+                *ngFor="let photo of tour.photos; index as i">
+                <img src="{{photo}}" style="max-height: 700px;" />
+                <div class="carousel-caption">
+                    <h1>{{tour.docelowyKraj}}</h1>
+                    <h3>{{tour.nazwa}}</h3>
+                    <p>{{tour.opisWycieczki}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+
 <div class="container">
     <a *ngIf='tour'>
         {{tour.nazwa}}<br>
@@ -7,7 +34,6 @@
         {{tour.cenaJednostkowa}}<br>
         {{tour.maxIloscMiejsca}}<br>
         {{tour.opisWycieczki}}<br>
-        <img class="rounded-image" src="{{tour.link}}"><br>
         {{tour.rezerwacje}}<br>
         {{tour.waluta}}<br>
         <a *ngIf='isInBasket'>Wycieczka juz w koszyku<br>
