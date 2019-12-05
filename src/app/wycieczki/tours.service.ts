@@ -3,20 +3,36 @@ import { WYCIECZKI, Wycieczka } from '../wycieczka';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import {AngularFireDatabase } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToursService {
 
-  private toursApiUrl = 'api/tours';
+  private toursApiUrl = '/tours';
 
   tours: Wycieczka[] = WYCIECZKI;
 
-  constructor(private http: HttpClient) { }
+  public data: Observable<any[]>;
+  constructor(
+    private http: HttpClient,
+    private db: AngularFirestore) {
+  }
 
-  getProducts(): Observable<Wycieczka[]> {
-    return this.http.get<Wycieczka[]>(this.toursApiUrl).pipe(map((response: any) => response.data));
+  ngOnInit() {
+    // this.data = this.db.list('/tours');
+  }
+  // odczyt danych z bazy
+  // public getdata(listPath): Observable<any[]> {
+  //   return this.db.list(listPath);
+  // }
+
+  getProducts(): Observable<any[]> {
+    return this.db.collection('/tours').valueChanges();
+    // return this.data;/
+    // return this.http.get<Wycieczka[]>(this.toursApiUrl).pipe(map((response: any) => response.data));
   };
 
   getProduct(index: number): Promise<Wycieczka> {

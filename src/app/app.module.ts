@@ -17,6 +17,10 @@ import { BasketElementComponent } from './basket-element/basket-element.componen
 import { SingleTourComponent } from './single-tour/single-tour.component';
 import { LoginComponent } from './login/login.component';
 import { InMemoryToursDataService } from './in-memory-data/in-memory-tours-data.service';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth"; import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,11 @@ import { InMemoryToursDataService } from './in-memory-data/in-memory-tours-data.
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryToursDataService, { dataEncapsulation: true }
-    )
+    ),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule, // do obsługi autentykacji
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [HelloComponent]
