@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     console.log(this.modelForm.value);
     this.authService.login(this.modelForm.value).then(result => {
-      this.router.navigate(['/']);
+      this.router.navigate(['/tours']);
       console.log('success');
     }).catch(error => {
       console.log(error);

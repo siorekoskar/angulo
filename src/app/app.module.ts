@@ -23,6 +23,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './users/users.component';
+import { SiteComponent } from './site/site.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { UsersComponent } from './users/users.component';
     LoginComponent,
     RegisterComponent,
     UsersComponent,
+    SiteComponent,
   ],
   imports: [
     BrowserModule,

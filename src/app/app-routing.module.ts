@@ -8,25 +8,16 @@ import { LoginComponent } from './login/login.component';
 import { NewTourComponent } from './new-tour/new-tour.component';
 import { AuthGuard } from './auth/auth.guard';
 import { RegisterComponent } from './register/register.component';
+import { SiteComponent } from './site/site.component';
 
 const routes: Routes = [
-  // { path: '', component: WycieczkiComponent },
-  // { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  {
-    path: '',
-    component: WycieczkiComponent, //canActivate: [AuthGuard],
-    children: [
-      // { path: 'basket', component: BasketPreviewComponent },
-      // { path: 'tours/:id', component: SingleTourComponent },
-      // { path: 'new-tour', component: NewTourComponent }
-    ]
-  },
-
-  { path: 'basket', component: BasketPreviewComponent },
-  { path: 'tours/:id', component: SingleTourComponent },
-  { path: 'new-tour', component: NewTourComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'tours', component: WycieczkiComponent, canActivate: [AuthGuard] },
+  { path: 'basket', component: BasketPreviewComponent, canActivate: [AuthGuard], },
+  { path: 'tours/:id', component: SingleTourComponent, canActivate: [AuthGuard], },
+  { path: 'new-tour', component: NewTourComponent, canActivate: [AuthGuard], },
 ];
 
 @NgModule({
