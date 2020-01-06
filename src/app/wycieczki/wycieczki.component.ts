@@ -65,8 +65,8 @@ export class WycieczkiComponent implements OnInit {
     return 2;
   }
 
-  tourRemoved(index: number) {
-    this.toursService.deleteProduct(index).subscribe(() => {
+  tourRemoved(index: string) {
+    this.toursService.deleteProduct(index).then(() => {
       this.update.next(true);
     })
   }
