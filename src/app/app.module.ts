@@ -25,6 +25,7 @@ import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './users/users.component';
 import { SiteComponent } from './site/site.component';
 import { AdminToursComponent } from './admin-tours/admin-tours.component';
+import { AdminTourComponent } from './admin-tour/admin-tour.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { AdminToursComponent } from './admin-tours/admin-tours.component';
     UsersComponent,
     SiteComponent,
     AdminToursComponent,
+    AdminTourComponent,
   ],
   imports: [
     BrowserModule,

@@ -51,6 +51,10 @@ export class ToursService {
     );
   };
 
+  updateProduct(id: string, tour: Wycieczka): Promise<void> {
+    return this.db.collection('/tours').doc(id).set(tour);
+  }
+
   addProduct(tour: Wycieczka): Promise<Wycieczka> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
