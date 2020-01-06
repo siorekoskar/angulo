@@ -16,12 +16,15 @@ const routes: Routes = [
     path: '',
     component: WycieczkiComponent, //canActivate: [AuthGuard],
     children: [
-      { path: 'basket', component: BasketPreviewComponent },
-      { path: 'tours/:id', component: SingleTourComponent },
-      { path: 'new-tour', component: NewTourComponent }
+      // { path: 'basket', component: BasketPreviewComponent },
+      // { path: 'tours/:id', component: SingleTourComponent },
+      // { path: 'new-tour', component: NewTourComponent }
     ]
   },
 
+  { path: 'basket', component: BasketPreviewComponent },
+  { path: 'tours/:id', component: SingleTourComponent },
+  { path: 'new-tour', component: NewTourComponent }
 ];
 
 @NgModule({

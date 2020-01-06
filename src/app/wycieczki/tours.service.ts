@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { WYCIECZKI, Wycieczka } from '../wycieczka';
+// import { WYCIECZKI, Wycieczka } from '../wycieczka';
+import { Wycieczka } from '../wycieczka';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import {AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -13,7 +14,7 @@ export class ToursService {
 
   private toursApiUrl = '/tours';
 
-  tours: Wycieczka[] = WYCIECZKI;
+  tours: Wycieczka[] = [];//WYCIECZKI;
 
   public data: Observable<any[]>;
   constructor(
@@ -30,20 +31,31 @@ export class ToursService {
   // }
 
   getProducts(): Observable<any[]> {
-    return this.db.collection('/tours').valueChanges();
+
+    let documentToDomainObject = _ => {
+      const object = _.payload.doc.data();
+      object.id = _.payload.doc.id;
+      return object;
+    }
+
+    return this.db.collection('/tours').snapshotChanges().pipe(
+      map(a => a.map(documentToDomainObject))
+    )
     // return this.data;/
     // return this.http.get<Wycieczka[]>(this.toursApiUrl).pipe(map((response: any) => response.data));
   };
 
-  getProduct(index: number): Promise<Wycieczka> {
-    return this.http.get<Wycieczka>(`${this.toursApiUrl}/${index}`).toPromise().then((response: any) => response.data);
+  getProduct(index: string): Promise<Wycieczka> {
+    return this.db.collection('/tours').doc(index).get().toPromise().then((response: any) => response.data);
+    // return this.http.get<Wycieczka>(`${this.toursApiUrl}/${index}`).toPromise().then((response: any) => response.data);
   };
 
   addProduct(tour: Wycieczka): Promise<Wycieczka> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.http.post<Wycieczka>(this.toursApiUrl, tour, httpOptions).toPromise().then((response: any) => response.data);
+    return this.db.collection('/tours').add(tour).then((response: any) => response.data);
+    // return this.http.post<Wycieczka>(this.toursApiUrl, tour, httpOptions).toPromise().then((response: any) => response.data);
   };
 
   deleteProduct(tour: Wycieczka | number): Observable<Wycieczka> {

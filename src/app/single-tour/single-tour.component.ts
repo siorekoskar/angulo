@@ -12,7 +12,7 @@ import { ReviewComponent } from '../review/review.component';
 })
 export class SingleTourComponent implements OnInit {
 
-  index: number;
+  index: string;
   tour: Wycieczka;
   isInBasket: boolean;
   review = new ReviewComponent();
@@ -23,7 +23,7 @@ export class SingleTourComponent implements OnInit {
     private basketService: BasketService) { }
 
   ngOnInit() {
-    this.index = Number(this.route.snapshot.paramMap.get("id"));
+    this.index = this.route.snapshot.paramMap.get("id");
     this.toursService.getProduct(this.index).then(tour => {
       this.tour = tour;
       this.isInBasket = this.basketService.toursChosen.some(tour => tour.tour.id === this.index);

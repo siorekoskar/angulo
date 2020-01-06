@@ -12,9 +12,9 @@ export class WycieczkaComponent implements OnInit {
   @Input() wycieczka: Wycieczka;
   @Input() isCheapest: boolean;
   @Input() isMostExpensive: boolean;
-  @Output() signaledRemoved = new EventEmitter<number>();
+  @Output() signaledRemoved = new EventEmitter<string>();
   @Output() tourAddedToBasket = new EventEmitter<{tour: Wycieczka, reservedTours: number}>();
-  @Input() index: number;
+  @Input() index: string;
   reservedTours: number = 0;
 
   constructor() { }

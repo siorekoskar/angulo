@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { WYCIECZKI } from '../wycieczka';
+// import { WYCIECZKI } from '../wycieczka';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ import { WYCIECZKI } from '../wycieczka';
 export class InMemoryToursDataService implements InMemoryDbService {
 
   createDb() {
-    const tours = WYCIECZKI;
+    const tours = []//WYCIECZKI;
     return {tours};
   }
 }
