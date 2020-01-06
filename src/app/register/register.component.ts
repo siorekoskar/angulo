@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
   modelForm: FormGroup;
 
@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.modelForm.value);
-    this.authService.login(this.modelForm.value).then(result => {
-      this.router.navigate(['/']);
+    this.authService.register(this.modelForm.value).then(result => {
+      this.router.navigate(['/login']);
       console.log('success');
     }).catch(error => {
       console.log(error);

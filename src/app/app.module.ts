@@ -21,6 +21,8 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth"; import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { RegisterComponent } from './register/register.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     BasketElementComponent,
     SingleTourComponent,
     LoginComponent,
+    RegisterComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,

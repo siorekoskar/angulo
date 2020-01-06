@@ -7,6 +7,7 @@ import { SingleTourComponent } from './single-tour/single-tour.component';
 import { LoginComponent } from './login/login.component';
 import { NewTourComponent } from './new-tour/new-tour.component';
 import { AuthGuard } from './auth/auth.guard';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   // { path: '', component: WycieczkiComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
 
   { path: 'basket', component: BasketPreviewComponent },
   { path: 'tours/:id', component: SingleTourComponent },
-  { path: 'new-tour', component: NewTourComponent }
+  { path: 'new-tour', component: NewTourComponent },
+  { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({

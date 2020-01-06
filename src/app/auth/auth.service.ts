@@ -5,11 +5,12 @@ import { FirebaseApp } from '@angular/fire';
 import * as firebase from 'firebase';
 
 export interface Credentials {
-  email: string;
+  username: string;
   password: string;
 }
 
-@Injectable({ providedIn: 'root' }) export class AuthService {
+@Injectable({ providedIn: 'root' })
+export class AuthService {
 
   readonly authState$: Observable<User | null> = this.fireAuth.authState;
 
@@ -19,15 +20,15 @@ export interface Credentials {
     return this.fireAuth.auth.currentUser;
   }
 
-  login({ email, password }: Credentials) {
+  login({ username, password }: Credentials) {
     const session = firebase.auth.Auth.Persistence.SESSION;
     return this.fireAuth.auth.setPersistence(session).then(() => {
-      return this.fireAuth.auth.signInWithEmailAndPassword(email, password);
+      return this.fireAuth.auth.signInWithEmailAndPassword(username, password);
     });
   }
 
-  register({ email, password }: Credentials) {
-    return this.fireAuth.auth.createUserWithEmailAndPassword(email, password);
+  register({ username, password }: Credentials) {
+    return this.fireAuth.auth.createUserWithEmailAndPassword(username, password);
   }
 
   logout() {
