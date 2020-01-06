@@ -1,6 +1,7 @@
-<nav class="topnav fixed-top">
+<nav *ngIf="authService.user != null" class="topnav fixed-top">
     <a routerLink="/tours" routerLinkActive="active">Home</a>
     <a routerLink="/basket" routerLinkActive="active">Basket</a>
-    <a routerLink="/new-tour" routerLinkActive="active">New tour</a>
-    <a routerLink="/login" routerLinkActive="active" (click)='authService.logout()'>Logout</a>
+    <a *ngIf="usersService.isAdmin" routerLink="/new-tour" routerLinkActive="active">New tour</a>
+    <a *ngIf="authService.user != null" routerLink="/login" routerLinkActive="active"
+        (click)='authService.logout()'>Logout</a>
 </nav>

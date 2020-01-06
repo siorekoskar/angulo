@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     console.log(this.modelForm.value);
     this.authService.register(this.modelForm.value).then(result => {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/tours']);
       console.log('success');
     }).catch(error => {
       console.log(error);

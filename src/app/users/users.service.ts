@@ -1,23 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class UsersService {
 
-  private usersUrl = '/users';
+    private usersUrl = '/users';
 
-  public data: Observable<any[]>;
-  constructor(
-    private db: AngularFirestore) {
-  }
+    public data: Observable<any[]>;
+    constructor(
+        private firestore: AngularFirestore,
+        private authService: AuthService) {
+    }
 
-  ngOnInit() {
+    isAdmin: boolean
 
-  }
+    ngOnInit() {
+        this.checkIsAdmin();
+    }
+
+    checkIsAdmin() {
+        this.authService.authState$.pipe(map(state => {
+            if (state !== null) {
+                this.firestore.doc('permissions/' + state.email)
+                    .get()
+                    .subscribe(value => this.isAdmin = value.get("role") === "ADMIN");
+            }
+            this.isAdmin = false;
+        }
+        )
+        ).subscribe(value => value);
+    }
 
 }
