@@ -46,7 +46,11 @@ export class ToursService {
   };
 
   getProduct(index: string): Promise<Wycieczka> {
-    return this.db.collection('/tours').doc(index).get().toPromise().then((response: any) => response.data);
+    return this.db.collection('/tours').doc(index).get().toPromise().then(
+      (response: any) => {
+        return response.data();
+      }
+    );
     // return this.http.get<Wycieczka>(`${this.toursApiUrl}/${index}`).toPromise().then((response: any) => response.data);
   };
 
