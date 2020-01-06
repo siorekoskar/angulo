@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ReviewComponent } from '../review/review.component';
 import { Wycieczka } from '../wycieczka';
+import { UsersService } from '../users/users.service';
 
 @Component({
   selector: 'app-wycieczka',
@@ -13,11 +14,11 @@ export class WycieczkaComponent implements OnInit {
   @Input() isCheapest: boolean;
   @Input() isMostExpensive: boolean;
   @Output() signaledRemoved = new EventEmitter<string>();
-  @Output() tourAddedToBasket = new EventEmitter<{tour: Wycieczka, reservedTours: number}>();
+  @Output() tourAddedToBasket = new EventEmitter<{ tour: Wycieczka, reservedTours: number }>();
   @Input() index: string;
   reservedTours: number = 0;
 
-  constructor() { }
+  constructor(private usersService: UsersService) { }
 
   plusButton() {
     if (this.isPlaceLeft()) {
@@ -33,11 +34,11 @@ export class WycieczkaComponent implements OnInit {
     }
   }
 
-  isPlaceLeft(){
+  isPlaceLeft() {
     return this.wycieczka.maxIloscMiejsca - this.wycieczka.rezerwacje > 0
   }
 
-  getWycieczka(){
+  getWycieczka() {
     return this.wycieczka;
   }
 
@@ -49,12 +50,12 @@ export class WycieczkaComponent implements OnInit {
     return this.wycieczka.cenaJednostkowa;
   }
 
-  deleteTour(){
+  deleteTour() {
     this.signaledRemoved.emit(this.index);
   }
 
   addTourToBasket() {
-    this.tourAddedToBasket.emit({tour: this.wycieczka, reservedTours: this.reservedTours});
+    this.tourAddedToBasket.emit({ tour: this.wycieczka, reservedTours: this.reservedTours });
     this.reservedTours = 0;
   }
 

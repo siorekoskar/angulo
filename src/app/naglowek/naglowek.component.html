@@ -2,6 +2,7 @@
     <a routerLink="/tours" routerLinkActive="active">Home</a>
     <a routerLink="/basket" routerLinkActive="active">Basket</a>
     <a *ngIf="usersService.isAdmin" routerLink="/new-tour" routerLinkActive="active">New tour</a>
+    <a *ngIf="usersService.isAdmin" routerLink="/admin/tours" routerLinkActive="active">Admin</a>
     <a *ngIf="authService.user != null" routerLink="/login" routerLinkActive="active"
         (click)='authService.logout()'>Logout</a>
 </nav>

@@ -21,7 +21,7 @@
             <button class="tour-button btn btn-primary" (click)="addTourToBasket()">Add to basket <span
                     class="badge badge-light">{{reservedTours}}</span></button><br />
             <br>
-            <button class="tour-button btn btn-primary" (click)="deleteTour()">Usun</button>
+            <button *ngIf='usersService.isAdmin' class="tour-button btn btn-primary" (click)="deleteTour()">Usun</button>
             <br>
             ilosc miejsca:
             <span *ngIf="wycieczka.maxIloscMiejsca - wycieczka.rezerwacje === 0; else elseBlock">BRAK MIEJSCA</span>

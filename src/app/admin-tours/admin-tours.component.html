@@ -1,0 +1,24 @@
+<div style="margin-top:80px">
+    <div class="container">
+        <h2>Tour</h2>
+        <p>Tests</p>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Tour name</th>
+                    <th>Country</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tour of tours">
+                    <td>{{tour.nazwa}}</td>
+                    <td>{{tour.docelowyKraj}}</td>
+                    <td>{{tour.cenaJednostkowa | currency: tour.waluta }}</td>
+                    <td><button class="tour-button btn btn-primary" (click)="deleteTour(tour.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

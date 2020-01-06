@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { NewTourComponent } from './new-tour/new-tour.component';
 import { AuthGuard } from './auth/auth.guard';
 import { RegisterComponent } from './register/register.component';
-import { SiteComponent } from './site/site.component';
+import { AdminToursComponent } from './admin-tours/admin-tours.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'basket', component: BasketPreviewComponent, canActivate: [AuthGuard], },
   { path: 'tours/:id', component: SingleTourComponent, canActivate: [AuthGuard], },
   { path: 'new-tour', component: NewTourComponent, canActivate: [AuthGuard], },
+  { path: 'admin/tours', component: AdminToursComponent, canActivate: [AuthGuard], },
 ];
 
 @NgModule({

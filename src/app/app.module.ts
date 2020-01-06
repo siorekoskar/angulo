@@ -24,6 +24,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './users/users.component';
 import { SiteComponent } from './site/site.component';
+import { AdminToursComponent } from './admin-tours/admin-tours.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { SiteComponent } from './site/site.component';
     RegisterComponent,
     UsersComponent,
     SiteComponent,
+    AdminToursComponent,
   ],
   imports: [
     BrowserModule,
