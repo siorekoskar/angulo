@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { ToursService } from '../wycieczki/tours.service';
 import { Wycieczka } from '../wycieczka';
@@ -18,7 +18,9 @@ export class SingleTourComponent implements OnInit {
   tourDates: TourDate[];
   isInBasket: boolean;
   review = new ReviewComponent();
+  tourDatesMap = {};
   userRating: number = 0;
+  @Output() tourAddedToBasket = new EventEmitter<{ tourDate: TourDate, reservedTours: number }>();
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +34,9 @@ export class SingleTourComponent implements OnInit {
       this.isInBasket = this.basketService.toursChosen.some(tour => tour.tour.id === this.index);
       this.toursService.getTourDatesForProduct(tour).then(tourDates => {
         this.tourDates = tourDates
+        tourDates.map(tourDate => {
+          this.tourDatesMap[tourDate.id] = { tourDate: tourDate, res: 0 };
+        })
       });
     });
   }
@@ -46,5 +51,23 @@ export class SingleTourComponent implements OnInit {
 
   bookTour(id: number) {
 
+  }
+
+  plusButton(tourId) {
+    this.tourDatesMap[tourId].res += 1;
+  }
+
+  minusButton(tourId) {
+    this.tourDatesMap[tourId].res -= 1;
+  }
+
+  addTourToBasket(tourId) {
+    let basketTour = {
+      reservedTours: this.tourDatesMap[tourId].res,
+      tourDate: this.tourDatesMap[tourId].tourDate,
+      basketId: 'null',
+      tour: this.tour
+    };
+    this.basketService.addTour(basketTour)
   }
 }

@@ -7,21 +7,7 @@
             <h3>{{wycieczka.docelowyKraj | uppercase}}
                 <small>{{wycieczka.cenaJednostkowa | currency: wycieczka.waluta }}</small></h3>
             <br>
-            Rezerwacje: <span
-                [ngStyle]="{'background-color': wycieczka.rezerwacje < 10 ? 'red' : 'green'}">{{wycieczka.rezerwacje}}</span>
-            <br>
-
-            <div class="btn-group">
-                <button class="tour-button btn btn-primary" [ngClass]="wycieczka.rezerwacje === 0 ? 'disabled' : ''"
-                    (click)="minusButton()">-</button>
-                <button class="tour-button btn btn-primary"
-                    [ngClass]="wycieczka.maxIloscMiejsca === wycieczka.rezerwacje ? 'disabled' : ''"
-                    (click)="plusButton()">+</button>
-            </div>
-            <button class="tour-button btn btn-primary" (click)="addTourToBasket()">Add to basket <span
-                    class="badge badge-light">{{reservedTours}}</span></button><br />
-            <br>
-            <button *ngIf='usersService.isAdmin' class="tour-button btn btn-primary" (click)="deleteTour()">Usun</button>
+        
             <br>
             ilosc miejsca:
             <span *ngIf="wycieczka.maxIloscMiejsca - wycieczka.rezerwacje === 0; else elseBlock">BRAK MIEJSCA</span>

@@ -14,12 +14,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let tour of tours">
+                <tr *ngFor="let tour of getTours()">
                     <td>{{tour.tour.nazwa}}</td>
                     <td>{{tour.tour.docelowyKraj}}</td>
-                    <td></td>
-                    <td></td>
+                    <td>{{tour.tourDate.startDate | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{tour.tourDate.endDate | date: 'dd/MM/yyyy'}}</td>
                     <td>{{tour.tour.cenaJednostkowa | currency: tour.tour.waluta }}</td>
+                    <td>{{tour.reservedTours}}</td>
                     <td>
                         <button class="tour-button btn btn-primary" (click)="deleteTour(tour.basketId)">Delete</button>
                     </td>

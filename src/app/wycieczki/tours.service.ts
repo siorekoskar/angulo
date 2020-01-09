@@ -92,9 +92,9 @@ export class ToursService {
         }
       )
     });
-    return Promise.all(promises).then(function(results) {
+    return Promise.all(promises).then(function (results) {
       return results;
-  });
+    });
   }
 
   updateProduct(id: string, tour: Wycieczka): Promise<void> {

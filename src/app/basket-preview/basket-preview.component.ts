@@ -15,6 +15,10 @@ export class BasketPreviewComponent implements OnInit {
   constructor(private basketService: BasketService) { 
   }
 
+  getTours(): BasketTour[] {
+    return this.tours;
+  }
+
   ngOnInit() {
     this.tours = this.basketService.toursChosen;
   }
