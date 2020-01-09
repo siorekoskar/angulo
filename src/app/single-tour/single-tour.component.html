@@ -44,8 +44,8 @@
                 <tbody>
                     <tr *ngFor="let tourDate of tourDates">
                     <!-- <tr> -->
-                        <td>{{tourDate.startDate}}</td>
-                        <td>{{tourDate.endDate}}</td>
+                        <td>{{tourDate.startDate | date: 'dd/MM/yyyy'}}</td>
+                        <td>{{tourDate.endDate | date: 'dd/MM/yyyy'}}</td>
                         <td>{{tourDate.maxRes}}</td>
                         <td>{{tourDate.maxRes - tourDate.currRes}}</td>
                         <td>

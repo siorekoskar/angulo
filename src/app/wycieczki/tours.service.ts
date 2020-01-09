@@ -86,6 +86,8 @@ export class ToursService {
         (response: any) => {
           let tourDate = response.data();
           tourDate.id = response.id;
+          tourDate.startDate = new Date((tourDate.startDate as any).seconds * 1000)
+          tourDate.endDate = new Date((tourDate.endDate as any).seconds * 1000)
           return tourDate;
         }
       )
