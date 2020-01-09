@@ -4,6 +4,7 @@ import { ToursService } from '../wycieczki/tours.service';
 import { Wycieczka } from '../wycieczka';
 import { BasketService } from '../basket/basket.service';
 import { ReviewComponent } from '../review/review.component';
+import { TourDate } from '../tour-date';
 
 @Component({
   selector: 'app-single-tour',
@@ -14,6 +15,7 @@ export class SingleTourComponent implements OnInit {
 
   index: string;
   tour: Wycieczka;
+  tourDates: TourDate[];
   isInBasket: boolean;
   review = new ReviewComponent();
   userRating: number = 0;
@@ -28,6 +30,9 @@ export class SingleTourComponent implements OnInit {
     this.toursService.getProduct(this.index).then(tour => {
       this.tour = tour;
       this.isInBasket = this.basketService.toursChosen.some(tour => tour.tour.id === this.index);
+      this.toursService.getTourDatesForProduct(tour).then(tourDates => {
+        this.tourDates = tourDates
+      });
     });
   }
 

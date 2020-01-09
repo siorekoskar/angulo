@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { TourDate } from '../tour-date';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,7 @@ export class ToursService {
       if (tourDates) {
         tourDates.forEach(tourDate => {
           this.db.collection('/tourdates').doc(tourDate.id).get().toPromise().then(
-            (response: any) =>{
+            (response: any) => {
               let tourDate = response.data();
               tourDate.id = response.id;
               object.tourDates.push(tourDate);
@@ -59,10 +60,40 @@ export class ToursService {
   getProduct(index: string): Promise<Wycieczka> {
     return this.db.collection('/tours').doc(index).get().toPromise().then(
       (response: any) => {
+        const object = response.data();
+        object.id = response.id;
+        // let tourDates = object.tourDates;
+        // object.tourDates = [];
+        // if (tourDates) {
+        //   tourDates.forEach(tourDate => {
+        //     this.db.collection('/tourdates').doc(tourDate.id).get().toPromise().then(
+        //       (response: any) =>{
+        //         let tourDate = response.data();
+        //         tourDate.id = response.id;
+        //         object.tourDates.push(tourDate);
+        //       }
+        //     )
+        //   })
+        // }
         return response.data();
       }
     );
   };
+
+  getTourDatesForProduct(tour: Wycieczka): Promise<TourDate[]> {
+    var promises = tour.tourDates.map(tourDate => {
+      return this.db.collection('/tourdates').doc(tourDate.id).get().toPromise().then(
+        (response: any) => {
+          let tourDate = response.data();
+          tourDate.id = response.id;
+          return tourDate;
+        }
+      )
+    });
+    return Promise.all(promises).then(function(results) {
+      return results;
+  });
+  }
 
   updateProduct(id: string, tour: Wycieczka): Promise<void> {
     return this.db.collection('/tours').doc(id).update(tour);

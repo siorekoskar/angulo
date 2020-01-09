@@ -42,17 +42,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr *ngFor="let tour of tours"> -->
-                    <tr>
-                        <td>Start</td>
-                        <td>Ends</td>
-                        <td>{{tour.maxIloscMiejsca}}</td>
-                        <td>{{tour.maxIloscMiejsca - tour.rezerwacje}}</td>
+                    <tr *ngFor="let tourDate of tourDates">
+                    <!-- <tr> -->
+                        <td>{{tourDate.startDate}}</td>
+                        <td>{{tourDate.endDate}}</td>
+                        <td>{{tourDate.maxRes}}</td>
+                        <td>{{tourDate.maxRes - tourDate.currRes}}</td>
                         <td>
                             <button style="text-align: right;" class="tour-button btn btn-primary" (click)="bookTour(1)">Book</button>
                         </td>
                     </tr>
-                    <!-- </tr> -->
                 </tbody>
             </table>
             Rate: <app-rating (rated)="tourRated($event)"></app-rating>
