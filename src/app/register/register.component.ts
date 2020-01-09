@@ -30,6 +30,7 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['/tours']);
       console.log('success');
     }).catch(error => {
+      alert(`${error.message}`);
       console.log(error);
     })
     this.modelForm.reset();

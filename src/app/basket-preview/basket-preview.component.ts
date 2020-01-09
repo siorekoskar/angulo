@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BasketService } from '../basket/basket.service';
 import { Wycieczka } from '../wycieczka';
+import { BasketTour } from '../basket-tour';
 
 @Component({
   selector: 'app-basket-preview',
@@ -9,13 +10,17 @@ import { Wycieczka } from '../wycieczka';
 })
 export class BasketPreviewComponent implements OnInit {
 
-  tours: Wycieczka[];
+  tours: BasketTour[];
 
   constructor(private basketService: BasketService) { 
   }
 
   ngOnInit() {
-    this.tours = this.basketService.toursChosen.map(tour => tour.tour);
+    this.tours = this.basketService.toursChosen;
   }
 
+  deleteTour(tourId: string){
+    this.basketService.removeTour(tourId);
+    this.tours = this.basketService.toursChosen;
+  }
 }

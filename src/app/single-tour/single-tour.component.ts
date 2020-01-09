@@ -35,7 +35,7 @@ export class SingleTourComponent implements OnInit {
     this.review.review = ocena;
   }
 
-  tourRated(rating: number){ 
+  tourRated(rating: number) {
     this.userRating = rating;
   }
 }
