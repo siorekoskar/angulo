@@ -35,6 +35,19 @@ export class ToursService {
     let documentToDomainObject = _ => {
       const object = _.payload.doc.data();
       object.id = _.payload.doc.id;
+      let tourDates = object.tourDates;
+      object.tourDates = [];
+      if (tourDates) {
+        tourDates.forEach(tourDate => {
+          this.db.collection('/tourdates').doc(tourDate.id).get().toPromise().then(
+            (response: any) =>{
+              let tourDate = response.data();
+              tourDate.id = response.id;
+              object.tourDates.push(tourDate);
+            }
+          )
+        })
+      }
       return object;
     }
 

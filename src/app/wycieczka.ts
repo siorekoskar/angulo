@@ -1,3 +1,4 @@
+import { TourDate } from './tour-date';
 
 export interface Wycieczka {
     nazwa: string;
@@ -11,7 +12,8 @@ export interface Wycieczka {
     rezerwacje: number;
     waluta: string;
     id: string;
-    photos: string[]
+    photos: string[];
+    tourDates: TourDate[];
 }
 
 // export const WYCIECZKI = [
