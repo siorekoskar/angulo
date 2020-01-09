@@ -1,57 +1,61 @@
-<div>
-    <div id="demo" class="carousel slide" data-ride="carousel">
-        <ul class="carousel-indicators">
-            <div *ngFor="let photo of tour.photos ; index as i">
-                <li data-target="#demo" data-slide-to="i"> </li>
-            </div>
-        </ul>
-        <div class="carousel-inner">
-            <div class="carousel-item" [ngClass]="[i === 0 ? 'active' : '']"
-                *ngFor="let photo of tour.photos; index as i">
-                <img src="{{photo}}" style="max-height: 700px;" />
-                <div class="carousel-caption">
-                    <h1>{{tour.docelowyKraj}}</h1>
-                    <h3>{{tour.nazwa}}</h3>
-                    <p>{{tour.opisWycieczki}}</p>
+<a *ngIf='tour'>
+    <div>
+        <div id="demo" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <div *ngFor="let photo of tour.photos ; index as i">
+                    <li data-target="#demo" data-slide-to="i"> </li>
+                </div>
+            </ul>
+            <div class="carousel-inner">
+                <div class="carousel-item" [ngClass]="[i === 0 ? 'active' : '']"
+                    *ngFor="let photo of tour.photos; index as i">
+                    <img src="{{photo}}" style="max-height: 700px;" />
+                    <div class="carousel-caption">
+                        <h1>{{tour.docelowyKraj}}</h1>
+                        <h3>{{tour.nazwa}}</h3>
+                        <p>{{tour.opisWycieczki}}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <a class="carousel-control-prev" href="#demo" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" href="#demo" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </a>
-</div>
-
-<div class="container">
-    <a *ngIf='tour'>
-        {{tour.nazwa}}<br>
-        {{tour.docelowyKraj}}<br>
-        {{tour.dataRozpoczecia}}<br>
-        {{tour.dataZakonczenia}}<br>
-        {{tour.cenaJednostkowa}}<br>
-        {{tour.maxIloscMiejsca}}<br>
-        {{tour.opisWycieczki}}<br>
-        {{tour.rezerwacje}}<br>
-        {{tour.waluta}}<br>
-        <a *ngIf='isInBasket'>Wycieczka juz w koszyku<br>
-            Ocena:
-            <div class="radio">
-                <label>
-                    <input type="radio" name="review" value="1" (click)="setReview(1)">
-                    1
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="review" value="2" (click)="setReview(2)">
-                    2
-                </label>
-            </div>
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
         </a>
-    </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
 
-    <app-rating (rated)="tourRated($event)"></app-rating>
-</div>
+    <div style="margin-top:80px">
+        <div class="container">
+            <span class="boldtext">Country:</span> {{tour.docelowyKraj}}<br>
+            <span class="boldtext">Description:</span> {{tour.opisWycieczki}}<br>
+            <span class="boldtext">Price:</span> {{tour.cenaJednostkowa}}<br>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Max</th>
+                        <th>Available</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr *ngFor="let tour of tours"> -->
+                    <tr>
+                        <td>Start</td>
+                        <td>Ends</td>
+                        <td>{{tour.maxIloscMiejsca}}</td>
+                        <td>{{tour.maxIloscMiejsca - tour.rezerwacje}}</td>
+                        <td>
+                            <button style="text-align: right;" class="tour-button btn btn-primary" (click)="bookTour(1)">Book</button>
+                        </td>
+                    </tr>
+                    <!-- </tr> -->
+                </tbody>
+            </table>
+            Rate: <app-rating (rated)="tourRated($event)"></app-rating>
+        </div>
+    </div>
+</a>

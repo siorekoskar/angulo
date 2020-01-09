@@ -38,4 +38,8 @@ export class SingleTourComponent implements OnInit {
   tourRated(rating: number) {
     this.userRating = rating;
   }
+
+  bookTour(id: number) {
+
+  }
 }
