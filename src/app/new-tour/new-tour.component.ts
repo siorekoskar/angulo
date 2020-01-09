@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { ToursService } from '../wycieczki/tours.service';
 import { Wycieczka } from '../wycieczka';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-new-tour',
@@ -32,6 +33,7 @@ export class NewTourComponent implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private toursService: ToursService,
+    private db: AngularFirestore,
     private router: Router) { }
 
   ngOnInit(): void {
