@@ -18,6 +18,7 @@
                     <td>{{tour.cenaJednostkowa | currency: tour.waluta }}</td>
                     <td>
                         <button class="tour-button btn btn-primary" (click)="deleteTour(tour.id)">Delete</button>
+                        <a routerLink="/admin/tours/{{tour.id}}"><span class="tour-button btn btn-primary" href>Edit</span></a>
                     </td>
                 </tr>
             </tbody>
