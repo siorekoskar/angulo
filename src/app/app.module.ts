@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 
+import { RatingModule } from 'ng-starrating';
 import { AppRoutingModule } from './app-routing.module';
 import { HelloComponent } from './hello.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,8 +27,8 @@ import { UsersComponent } from './users/users.component';
 import { SiteComponent } from './site/site.component';
 import { AdminToursComponent } from './admin-tours/admin-tours.component';
 import { AdminTourComponent } from './admin-tour/admin-tour.component';
-import { UnathorizedComponent } from './unathorized/unathorized.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -47,10 +48,11 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
     SiteComponent,
     AdminToursComponent,
     AdminTourComponent,
-    UnathorizedComponent,
     UnauthorizedComponent,
+    RatingComponent,
   ],
   imports: [
+    RatingModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

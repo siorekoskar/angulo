@@ -16,6 +16,7 @@ export class SingleTourComponent implements OnInit {
   tour: Wycieczka;
   isInBasket: boolean;
   review = new ReviewComponent();
+  userRating: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,5 +33,9 @@ export class SingleTourComponent implements OnInit {
 
   setReview(ocena: number) {
     this.review.review = ocena;
+  }
+
+  tourRated(rating: number){ 
+    this.userRating = rating;
   }
 }
