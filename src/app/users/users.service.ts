@@ -37,4 +37,8 @@ export class UsersService {
         ).subscribe(value => value);
     }
 
+    isAdminFunction(){
+        this.checkIsAdmin();
+        return this.isAdmin;
+    }
 }
