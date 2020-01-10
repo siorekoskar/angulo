@@ -55,14 +55,12 @@ export class ToursService {
     )
   };
 
-
-
   getProduct(index: string): Promise<Wycieczka> {
     return this.db.collection('/tours').doc(index).get().toPromise().then(
       (response: any) => {
         const object = response.data();
         object.id = response.id;
-        return response.data();
+        return object;
       }
     );
   };
@@ -108,9 +106,17 @@ export class ToursService {
     let promises = basketTours.map(basketTour => {
       let tourDateId = basketTour.tourDate.id;
       let newTourAvailability = basketTour.reservedTours + basketTour.tourDate.currRes;
-      if (basketTour.tour.usersBought.filter(username => username === this.fireAuth.auth.currentUser.email).length !== 0) {
-        // this.db.collection('/tours').doc()
+      if (!basketTour.tour.usersBought) {
+        basketTour.tour.usersBought = [];
+      } 
+      
+      if (basketTour.tour.usersBought.filter(username => username === this.fireAuth.auth.currentUser.email).length === 0) {
+        basketTour.tour.usersBought.push(this.fireAuth.auth.currentUser.email);
       }
+  
+      this.updateProduct(basketTour.tour.id, basketTour.tour).then(res => {
+        console.log("paid");
+      })
       this.db.collection('/tourdates').doc(tourDateId)
         .update({ currRes: newTourAvailability })
         .then(result => {

@@ -85,6 +85,7 @@ export class SingleTourComponent implements OnInit {
     let basketTour = {
       reservedTours: this.tourDatesMap[tourId].res,
       tourDate: this.tourDatesMap[tourId].tourDate,
+      tourId: this.tour.id,
       basketId: 'null',
       tour: this.tour
     };
