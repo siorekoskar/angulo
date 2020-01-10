@@ -6,42 +6,49 @@
             <span *ngIf="!isEdit"><h1>Dodaj wycieczkę</h1></span>
             <form [formGroup]="modelForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
+                    <label *ngIf="hasError('nazwa', 'required')">Required field</label>
                     <div class="row">
                         <label class="col-sm-3">
                             <h4>Name:</h4>
                         </label>
                         <input name="nazwa" class="form-control col-sm-9" formControlName="nazwa"><br>
                     </div>
+                    <label *ngIf="hasError('docelowyKraj', 'required')">Required field</label>
                     <div class="row">
                         <label class="col-sm-3">
                             <h4>Country:</h4>
                         </label>
                         <input name="docelowyKraj" class="form-control col-sm-9" formControlName="docelowyKraj"><br>
                     </div>
+                    <label *ngIf="hasError('opisWycieczki', 'required')">Required field</label>
                     <div class="row">
                         <label class="col-sm-3">
                             <h4>Description:</h4>
                         </label>
                         <input name="opisWycieczki" class="form-control col-sm-9" formControlName="opisWycieczki"><br>
                     </div>
+                    <label *ngIf="hasError('link', 'required')">Required field</label>
                     <div class="row">
                         <label class="col-sm-3">
                             <h4>Link:</h4>
                         </label>
                         <input name="link" class="form-control col-sm-9" formControlName="link"><br>
                     </div>
+                    <label *ngIf="hasError('photos', 'required')">Required field</label>
                     <div class="row">
                         <label class="col-sm-3">
                             <h4>Photos:</h4>
                         </label>
                         <input name="photos" placeholder="photo1,photo2,photo3" class="form-control col-sm-9" formControlName="photos"><br>
                     </div>
+                    <label *ngIf="hasError('waluta', 'required')">Required field</label>
                     <div class="row">
                         <label class="col-sm-3">
                             <h4>Currency:</h4>
                         </label>
                         <input name="waluta" class="form-control col-sm-9" formControlName="waluta"><br>
                     </div>
+                    <label *ngIf="hasError('cenaJednostkowa', 'required')">Required field</label>
                     <div class="row">
                         <label class="col-sm-3">
                             <h4>Price:</h4>

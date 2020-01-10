@@ -101,4 +101,7 @@ export class NewTourComponent implements OnInit {
     }
   };
 
+  hasError = (controlName: string, errorName: string) => {
+    return this.modelForm.controls[controlName].hasError(errorName);
+  }
 }
