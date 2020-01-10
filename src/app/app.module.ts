@@ -29,6 +29,7 @@ import { AdminToursComponent } from './admin-tours/admin-tours.component';
 import { AdminTourComponent } from './admin-tour/admin-tour.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { RatingComponent } from './rating/rating.component';
+import { BasketTourEntryComponent } from './basket-tour-entry/basket-tour-entry.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { RatingComponent } from './rating/rating.component';
     AdminTourComponent,
     UnauthorizedComponent,
     RatingComponent,
+    BasketTourEntryComponent,
   ],
   imports: [
     RatingModule,

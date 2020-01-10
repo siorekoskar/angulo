@@ -26,7 +26,7 @@ export class SingleTourComponent implements OnInit {
     private route: ActivatedRoute,
     private toursService: ToursService,
     private basketService: BasketService) { }
-
+    
   ngOnInit() {
     this.index = this.route.snapshot.paramMap.get("id");
     this.toursService.getProduct(this.index).then(tour => {
@@ -34,9 +34,6 @@ export class SingleTourComponent implements OnInit {
       this.isInBasket = this.basketService.toursChosen.some(tour => tour.tour.id === this.index);
       this.toursService.getTourDatesForProduct(tour).then(tourDates => {
         this.tourDates = tourDates
-        tourDates.map(tourDate => {
-          this.tourDatesMap[tourDate.id] = { tourDate: tourDate, res: 0 };
-        })
       });
     });
   }
@@ -49,18 +46,7 @@ export class SingleTourComponent implements OnInit {
     this.userRating = rating;
   }
 
-  bookTour(id: number) {
-
-  }
-
-  plusButton(tourId) {
-    this.tourDatesMap[tourId].res += 1;
-  }
-
-  minusButton(tourId) {
-    this.tourDatesMap[tourId].res -= 1;
-  }
-
+  
   addTourToBasket(tourId) {
     let basketTour = {
       reservedTours: this.tourDatesMap[tourId].res,

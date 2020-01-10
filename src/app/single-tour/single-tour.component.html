@@ -42,25 +42,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let tourDate of tourDates">
-                    <!-- <tr> -->
-                        <td>{{tourDate.startDate | date: 'dd/MM/yyyy'}}</td>
-                        <td>{{tourDate.endDate | date: 'dd/MM/yyyy'}}</td>
-                        <td>{{tourDate.maxRes}}</td>
-                        <td>{{tourDate.maxRes - tourDate.currRes}}</td>
-                        <td>
-                            <div class="btn-group">
-                                <button class="tour-button btn btn-primary" [ngClass]="tourDate.currRes === 0 ? 'disabled' : ''"
-                                    (click)="minusButton(tourDate.id)">-</button>
-                                <button class="tour-button btn btn-primary"
-                                    [ngClass]="tourDate.maxRes === tourDate.currRes ? 'disabled' : ''"
-                                    (click)="plusButton(tourDate.id)">+</button>
-                                    <button class="tour-button btn btn-primary" (click)="addTourToBasket(tourDate.id)">Add to basket <span
-                                        class="badge badge-light">5</span></button><br />
-                            </div>
-                            <!--<button style="text-align: right;" class="tour-button btn btn-primary" (click)="bookTour(1)">Book</button> -->
-                        </td>
-                    </tr>
+                    <a *ngIf='tourDates'>
+                        <tr app-basket-tour-entry *ngFor="let tourDate of tourDates" [tour]="tour"
+                            [tourDate]="tourDate">
+                        </tr>
+                    </a>
                 </tbody>
             </table>
             Rate: <app-rating (rated)="tourRated($event)"></app-rating>
