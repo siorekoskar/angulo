@@ -3,13 +3,9 @@ import { TourDate } from './tour-date';
 export interface Wycieczka {
     nazwa: string;
     docelowyKraj: string;
-    dataRozpoczecia: string;
-    dataZakonczenia: string;
     cenaJednostkowa: number;
-    maxIloscMiejsca: number;
     opisWycieczki: string;
     link: string;
-    rezerwacje: number;
     waluta: string;
     id: string;
     photos: string[];

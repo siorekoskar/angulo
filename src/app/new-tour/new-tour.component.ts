@@ -42,12 +42,8 @@ export class NewTourComponent implements OnInit {
     this.modelForm = this.formBuilder.group({
       nazwa: [this.nazwa, [Validators.required]],
       docelowyKraj: [this.docelowyKraj, [Validators.required]],
-      dataRozpoczecia: [this.dataRozpoczecia, [Validators.required]],
-      dataZakonczenia: [this.dataZakonczenia, [Validators.required]],
-      maxIloscMiejsca: [this.maxIloscMiejsca, [Validators.required]],
       opisWycieczki: [this.opisWycieczki, [Validators.required]],
       link: [this.link, [Validators.required]],
-      rezerwacje: [this.rezerwacje, [Validators.required]],
       waluta: [this.waluta, [Validators.required]],
       photos: [this.photos, [Validators.required]],
       cenaJednostkowa: [this.cenaJednostkowa, [Validators.required]],
@@ -58,12 +54,8 @@ export class NewTourComponent implements OnInit {
         this.modelForm.setValue({
           nazwa: tour.nazwa,
           docelowyKraj: tour.docelowyKraj,
-          dataRozpoczecia: tour.dataRozpoczecia,
-          dataZakonczenia: tour.dataZakonczenia,
-          maxIloscMiejsca: tour.maxIloscMiejsca,
           opisWycieczki: tour.opisWycieczki,
           link: tour.link,
-          rezerwacje: tour.rezerwacje,
           waluta: tour.waluta,
           photos: tour.photos,
           cenaJednostkowa: tour.cenaJednostkowa !== null ? tour.cenaJednostkowa : 0
@@ -85,6 +77,9 @@ export class NewTourComponent implements OnInit {
           console.log(err);
         });
     } else {
+      let str = this.modelForm.get("photos").value as string
+      let splitStr = str.split(",");
+      this.modelForm.patchValue({photos: splitStr})
       this.toursService.addProduct(this.modelForm.value).then(result => {
         alert(`Added`);
         this.router.navigate(['/admin/tours']);

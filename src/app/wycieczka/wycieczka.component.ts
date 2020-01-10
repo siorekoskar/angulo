@@ -21,21 +21,12 @@ export class WycieczkaComponent implements OnInit {
   constructor(private usersService: UsersService) { }
 
   plusButton() {
-    if (this.isPlaceLeft()) {
-      this.wycieczka.rezerwacje += 1;
-      this.reservedTours += 1;
-    }
   }
 
   minusButton() {
-    if (this.isFull()) {
-      this.wycieczka.rezerwacje -= 1;
-      this.reservedTours -= 1;
-    }
   }
 
   isPlaceLeft() {
-    return this.wycieczka.maxIloscMiejsca - this.wycieczka.rezerwacje > 0
   }
 
   getWycieczka() {
@@ -43,7 +34,6 @@ export class WycieczkaComponent implements OnInit {
   }
 
   isFull() {
-    return this.wycieczka.rezerwacje > 0;
   }
 
   getCena() {
