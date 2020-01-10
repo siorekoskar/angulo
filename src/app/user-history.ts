@@ -1,4 +1,4 @@
-export interface History {
+export interface UserHistory {
     tourDatesBought: ConcreteBuy[];
     username:  string;
     id: string;

@@ -1,7 +1,7 @@
 <td>{{tourDate.startDate | date: 'dd/MM/yyyy'}}</td>
 <td>{{tourDate.endDate | date: 'dd/MM/yyyy'}}</td>
 <td>{{tourDate.maxRes}}</td>
-<td>{{tourDate.maxRes - tourDate.currRes}}</td>
+<td>{{available}}</td>
 <td>
     <div class="btn-group">
         <button class="tour-button btn btn-primary" [ngClass]="reservedTours === 0 ? 'disabled' : ''"

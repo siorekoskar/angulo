@@ -31,8 +31,9 @@ export class BasketPreviewComponent implements OnInit {
 
   pay() {
     this.toursService.pay(this.tours).then(_ => {
-      alert(`Bought`);
+      // alert(`Bought`);
       this.tours = [];
+      this.basketService.toursChosen = [];
     })
   }
 }

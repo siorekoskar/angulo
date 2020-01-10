@@ -9,6 +9,7 @@ import { TourDate } from '../tour-date';
 import { BasketTour } from '../basket-tour';
 import { AuthService } from '../auth/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { UserHistory } from '../user-history';
 
 @Injectable({
   providedIn: 'root'
@@ -101,20 +102,46 @@ export class ToursService {
     return this.db.collection('/tours').doc(index).delete();
   };
 
+  history: History;
+
   pay(basketTours: BasketTour[]): Promise<any> {
     let promises = basketTours.map(basketTour => {
       let tourDateId = basketTour.tourDate.id;
       let newTourAvailability = basketTour.reservedTours + basketTour.tourDate.currRes;
+      if (basketTour.tour.usersBought.filter(username => username === this.fireAuth.auth.currentUser.email).length !== 0) {
+        // this.db.collection('/tours').doc()
+      }
       this.db.collection('/tourdates').doc(tourDateId)
         .update({ currRes: newTourAvailability })
         .then(result => {
-          this.db.collection('/history', ref => {
-            return ref.where('username', '==', this.fireAuth.auth.currentUser.email)
-          }).snapshotChanges().toPromise().then(ref => {
-            console.log("git");
-          });
-        })
+          // this.getHistoryOfUser().subscribe(
+          //   history => {
+          //     let hist = history as UserHistory
+          //     hist.tourDatesBought.push({ tourDateId: tourDateId, amount: basketTour.reservedTours });
+          //     this.db.collection('/history').doc(hist.id).update({ tourDatesBought: hist.tourDatesBought })
+          //       .then(d => { console.log("udalo sie") });
+          //   }
+          // );
+        }
+        );
     });
     return Promise.all(promises);
+  }
+
+  historyGet() {
+
+  }
+
+  getHistoryOfUser(): Observable<any> {
+    let docToObj = _ => {
+      const object = _[0].payload.doc.data();
+      object.id = _[0].payload.doc.id;
+      return object;
+    }
+
+    return this.db.collection('/history'
+      , ref => {
+        return ref.where('username', '==', this.fireAuth.auth.currentUser.email)
+      }).snapshotChanges().pipe(map(docToObj));
   }
 }

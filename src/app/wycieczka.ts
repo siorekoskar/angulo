@@ -14,6 +14,13 @@ export interface Wycieczka {
     id: string;
     photos: string[];
     tourDates: TourDate[];
+    usersBought: string[];
+    usersRated: string[];
+    oneStar: number;
+    twoStars: number;
+    threeStars: number;
+    fourStars: number;
+    fiveStars: number;
 }
 
 // export const WYCIECZKI = [

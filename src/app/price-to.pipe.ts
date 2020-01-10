@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Wycieczka } from '../wycieczka';
+import { Wycieczka } from './wycieczka';
 
 @Pipe({
   name: 'priceTo'
