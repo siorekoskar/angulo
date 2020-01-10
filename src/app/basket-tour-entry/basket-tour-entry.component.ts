@@ -21,11 +21,15 @@ export class BasketTourEntryComponent implements OnInit {
   }
 
   plusButton() {
-    this.reservedTours += 1;
+    if (this.reservedTours + this.tourDate.currRes < this.tourDate.maxRes) {
+      this.reservedTours += 1;
+    }
   }
 
   minusButton() {
-    this.reservedTours -= 1;
+    if (this.reservedTours > 0) {
+      this.reservedTours -= 1;
+    }
   }
 
   addTourToBasket() {
@@ -36,5 +40,6 @@ export class BasketTourEntryComponent implements OnInit {
       tour: this.tour
     };
     this.basketService.addTour(basketTour)
+    this.reservedTours = 0;
   }
 }

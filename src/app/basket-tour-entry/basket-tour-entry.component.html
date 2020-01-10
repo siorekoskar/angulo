@@ -4,9 +4,9 @@
 <td>{{tourDate.maxRes - tourDate.currRes}}</td>
 <td>
     <div class="btn-group">
-        <button class="tour-button btn btn-primary" [ngClass]="tourDate.currRes === 0 ? 'disabled' : ''"
+        <button class="tour-button btn btn-primary" [ngClass]="reservedTours === 0 ? 'disabled' : ''"
             (click)="minusButton(tourDate.id)">-</button>
-        <button class="tour-button btn btn-primary" [ngClass]="tourDate.maxRes === tourDate.currRes ? 'disabled' : ''"
+        <button class="tour-button btn btn-primary" [ngClass]="tourDate.maxRes === reservedTours + tourDate.currRes ? 'disabled' : ''"
             (click)="plusButton(tourDate.id)">+</button>
         <button class="tour-button btn btn-primary" (click)="addTourToBasket(tourDate.id)">Add to basket <span
                 class="badge badge-light">{{reservedTours}}</span></button><br />
