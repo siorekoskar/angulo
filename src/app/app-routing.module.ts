@@ -12,6 +12,7 @@ import { AdminToursComponent } from './admin-tours/admin-tours.component';
 import { AdminTourComponent } from './admin-tour/admin-tour.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { RoleGuard } from './auth/role.guard';
+import { NewTourDateComponent } from './new-tour-date/new-tour-date.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'tours/:id', component: SingleTourComponent, canActivate: [AuthGuard], },
   { path: 'new-tour', component: NewTourComponent, canActivate: [AuthGuard, RoleGuard], },
   { path: 'admin/tours', component: AdminToursComponent, canActivate: [AuthGuard, RoleGuard], },
-  { path: 'admin/tours/:id', component: NewTourComponent, canActivate: [AuthGuard] },
+  { path: 'admin/tours/:id', component: NewTourComponent, canActivate: [AuthGuard, RoleGuard] },
+  { path: 'admin/tours/:id/tourdates', component: NewTourDateComponent, canActivate: [AuthGuard, RoleGuard] },
   { path: 'unauthorized', component: UnauthorizedComponent }
 ];
 

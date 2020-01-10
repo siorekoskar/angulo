@@ -9,9 +9,6 @@
             <br>
         
             <br>
-            ilosc miejsca:
-            <span *ngIf="wycieczka.maxIloscMiejsca - wycieczka.rezerwacje === 0; else elseBlock">BRAK MIEJSCA</span>
-            <ng-template #elseBlock>wolne: {{wycieczka.maxIloscMiejsca - wycieczka.rezerwacje}}</ng-template>
         </div>
     </div>
 </div>

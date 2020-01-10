@@ -4,6 +4,7 @@ import { ToursService } from '../wycieczki/tours.service';
 import { Wycieczka } from '../wycieczka';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-tour',
@@ -39,17 +40,17 @@ export class NewTourComponent implements OnInit {
   ngOnInit(): void {
     this.index = this.route.snapshot.paramMap.get("id");
     this.modelForm = this.formBuilder.group({
-      nazwa: this.nazwa,
-      docelowyKraj: this.docelowyKraj,
-      dataRozpoczecia: this.dataRozpoczecia,
-      dataZakonczenia: this.dataZakonczenia,
-      maxIloscMiejsca: this.maxIloscMiejsca,
-      opisWycieczki: this.opisWycieczki,
-      link: this.link,
-      rezerwacje: this.rezerwacje,
-      waluta: this.waluta,
-      photos: this.photos,
-      cenaJednostkowa: this.cenaJednostkowa
+      nazwa: [this.nazwa, [Validators.required]],
+      docelowyKraj: [this.docelowyKraj, [Validators.required]],
+      dataRozpoczecia: [this.dataRozpoczecia, [Validators.required]],
+      dataZakonczenia: [this.dataZakonczenia, [Validators.required]],
+      maxIloscMiejsca: [this.maxIloscMiejsca, [Validators.required]],
+      opisWycieczki: [this.opisWycieczki, [Validators.required]],
+      link: [this.link, [Validators.required]],
+      rezerwacje: [this.rezerwacje, [Validators.required]],
+      waluta: [this.waluta, [Validators.required]],
+      photos: [this.photos, [Validators.required]],
+      cenaJednostkowa: [this.cenaJednostkowa, [Validators.required]],
     });
     if (this.index !== null) {
       this.isEdit = true;
@@ -76,13 +77,20 @@ export class NewTourComponent implements OnInit {
     if (this.isEdit) {
       this.toursService.updateProduct(this.index, this.modelForm.value).then(
         res => {
+          alert(`Updated`);
           this.router.navigate(['/admin/tours']);
         },
         err => {
+          alert(`${err.message}`);
           console.log(err);
         });
     } else {
       this.toursService.addProduct(this.modelForm.value).then(result => {
+        alert(`Added`);
+        this.router.navigate(['/admin/tours']);
+      }, err => {
+        alert(`${err.message}`);
+        console.log(err);
       })
       this.modelForm.reset();
     }

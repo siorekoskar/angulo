@@ -33,6 +33,7 @@ import { BasketTourEntryComponent } from './basket-tour-entry/basket-tour-entry.
 import { CountryPipe } from './country.pipe';
 import { PriceFromPipe } from './price-from.pipe';
 import { PriceToPipe } from './price-to.pipe';
+import { NewTourDateComponent } from './new-tour-date/new-tour-date.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { PriceToPipe } from './price-to.pipe';
     CountryPipe,
     PriceFromPipe,
     PriceToPipe,
+    NewTourDateComponent,
   ],
   imports: [
     RatingModule,
