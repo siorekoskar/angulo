@@ -21,8 +21,8 @@ export class SingleTourComponent implements OnInit {
   review = new ReviewComponent();
   tourDatesMap = {};
   userRating: number = 0;
-  userDidBuy: boolean;
-  didNotRate: boolean;
+  userDidBuy: boolean = false;
+  didNotRate: boolean = false;
 
   @Output() tourAddedToBasket = new EventEmitter<{ tourDate: TourDate, reservedTours: number }>();
 
@@ -37,8 +37,12 @@ export class SingleTourComponent implements OnInit {
     this.toursService.getProduct(this.index).then(tour => {
       this.tour = tour;
       this.isInBasket = this.basketService.toursChosen.some(tour => tour.tour.id === this.index);
-      this.didNotRate = tour.usersRated.filter(user => user === this.fireAuth.auth.currentUser.email).length === 0;
-      this.userDidBuy = tour.usersBought.filter(user => user === this.fireAuth.auth.currentUser.email).length !== 0;
+      if (tour.usersRated) {
+        this.didNotRate = tour.usersRated.filter(user => user === this.fireAuth.auth.currentUser.email).length === 0;
+      }
+      if (tour.usersBought) {
+        this.userDidBuy = tour.usersBought.filter(user => user === this.fireAuth.auth.currentUser.email).length !== 0;
+      }
       this.toursService.getTourDatesForProduct(tour).then(tourDates => {
         this.tourDates = tourDates
       });
