@@ -23,6 +23,7 @@ export class SingleTourComponent implements OnInit {
   userRating: number = 0;
   userDidBuy: boolean = false;
   didNotRate: boolean = false;
+  rateCount: number = 0;
 
   @Output() tourAddedToBasket = new EventEmitter<{ tourDate: TourDate, reservedTours: number }>();
 
@@ -51,6 +52,10 @@ export class SingleTourComponent implements OnInit {
 
   getRating() {
     let d = this.tour.fiveStars + this.tour.fourStars + this.tour.threeStars + this.tour.twoStars + this.tour.oneStar as number;
+    if (d === 0) {
+      return 0;
+    }
+    this.rateCount = d;
     return (this.tour.fiveStars * 5 + this.tour.fourStars * 4 + this.tour.threeStars * 3 + this.tour.twoStars * 2 + this.tour.oneStar)
       / (d);
   }

@@ -49,7 +49,7 @@
                     </a>
                 </tbody>
             </table>
-            <span class="boldtext">Rating:</span> {{getRating()}}/5<br>
+            <span class="boldtext">Rating:</span> {{getRating()}}/5 ({{rateCount}})<br>
             <a *ngIf='userDidBuy && didNotRate'>
                 Rate: <app-rating (rated)="tourRated($event)"></app-rating>
             </a>

@@ -47,6 +47,11 @@ export class NewTourComponent implements OnInit {
       waluta: [this.waluta, [Validators.required]],
       photos: [this.photos, [Validators.required]],
       cenaJednostkowa: [this.cenaJednostkowa, [Validators.required]],
+      oneStar: 0,
+      twoStars: 0,
+      threeStars: 0,
+      fourStars: 0,
+      fiveStars: 0
     });
     if (this.index !== null) {
       this.isEdit = true;
@@ -58,7 +63,12 @@ export class NewTourComponent implements OnInit {
           link: tour.link,
           waluta: tour.waluta,
           photos: tour.photos,
-          cenaJednostkowa: tour.cenaJednostkowa !== null ? tour.cenaJednostkowa : 0
+          cenaJednostkowa: tour.cenaJednostkowa !== null ? tour.cenaJednostkowa : 0,
+          oneStar: tour.oneStar,
+          twoStars: tour.twoStars,
+          threeStars: tour.threeStars,
+          fourStars: tour.fourStars,
+          fiveStars: tour.fiveStars
         });
       });
     }
