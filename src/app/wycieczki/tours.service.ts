@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { WYCIECZKI, Wycieczka } from '../wycieczka';
 import { Wycieczka } from '../wycieczka';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -7,6 +6,9 @@ import { map } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { TourDate } from '../tour-date';
+import { BasketTour } from '../basket-tour';
+import { AuthService } from '../auth/auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -15,24 +17,19 @@ export class ToursService {
 
   private toursApiUrl = '/tours';
 
-  tours: Wycieczka[] = [];//WYCIECZKI;
+  tours: Wycieczka[] = [];
 
   public data: Observable<any[]>;
   constructor(
     private http: HttpClient,
-    private db: AngularFirestore) {
+    private db: AngularFirestore,
+    private fireAuth: AngularFireAuth) {
   }
 
   ngOnInit() {
-    // this.data = this.db.list('/tours');
   }
-  // odczyt danych z bazy
-  // public getdata(listPath): Observable<any[]> {
-  //   return this.db.list(listPath);
-  // }
 
   getProducts(): Observable<any[]> {
-
     let documentToDomainObject = _ => {
       const object = _.payload.doc.data();
       object.id = _.payload.doc.id;
@@ -57,24 +54,13 @@ export class ToursService {
     )
   };
 
+
+
   getProduct(index: string): Promise<Wycieczka> {
     return this.db.collection('/tours').doc(index).get().toPromise().then(
       (response: any) => {
         const object = response.data();
         object.id = response.id;
-        // let tourDates = object.tourDates;
-        // object.tourDates = [];
-        // if (tourDates) {
-        //   tourDates.forEach(tourDate => {
-        //     this.db.collection('/tourdates').doc(tourDate.id).get().toPromise().then(
-        //       (response: any) =>{
-        //         let tourDate = response.data();
-        //         tourDate.id = response.id;
-        //         object.tourDates.push(tourDate);
-        //       }
-        //     )
-        //   })
-        // }
         return response.data();
       }
     );
@@ -112,7 +98,23 @@ export class ToursService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    // const id = typeof tour === 'number' ? tour : tour.id;
     return this.db.collection('/tours').doc(index).delete();
   };
+
+  pay(basketTours: BasketTour[]): Promise<any> {
+    let promises = basketTours.map(basketTour => {
+      let tourDateId = basketTour.tourDate.id;
+      let newTourAvailability = basketTour.reservedTours + basketTour.tourDate.currRes;
+      this.db.collection('/tourdates').doc(tourDateId)
+        .update({ currRes: newTourAvailability })
+        .then(result => {
+          this.db.collection('/history', ref => {
+            return ref.where('username', '==', this.fireAuth.auth.currentUser.email)
+          }).snapshotChanges().toPromise().then(ref => {
+            console.log("git");
+          });
+        })
+    });
+    return Promise.all(promises);
+  }
 }

@@ -29,7 +29,7 @@
         </table>
         <h5>Total: <span class="nonbold">{{basketService.getCostTotal()}}</span></h5>
         <td>
-            <button *ngIf="getTours().length !== 0" class="tour-button btn btn-primary" (click)="deleteTour(tour.basketId)">Pay</button>
+            <button *ngIf="getTours().length !== 0" class="tour-button btn btn-primary" (click)="pay()">Pay</button>
         </td>
     </div>
 </div>
