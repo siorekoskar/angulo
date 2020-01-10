@@ -22,7 +22,7 @@ export class SingleTourComponent implements OnInit {
   tourDatesMap = {};
   userRating: number = 0;
   userDidBuy: boolean = false;
-  didNotRate: boolean = false;
+  didNotRate: boolean = true;
   rateCount: number = 0;
 
   @Output() tourAddedToBasket = new EventEmitter<{ tourDate: TourDate, reservedTours: number }>();
@@ -78,6 +78,14 @@ export class SingleTourComponent implements OnInit {
     } else if (rating === 5) {
       this.tour.fiveStars += 1;
     }
+    if (!this.tour.usersRated) {
+      this.tour.usersRated = [];
+    }
+    if(this.tour.usersRated.filter(user => user === this.fireAuth.auth.currentUser.email).length === 0){
+      this.tour.usersRated.push(this.fireAuth.auth.currentUser.email);
+      this.toursService.updateProduct(this.tour.id, this.tour).then(res => {});
+    }
+    
   }
 
 
