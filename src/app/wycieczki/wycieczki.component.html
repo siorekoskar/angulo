@@ -5,8 +5,22 @@
                 <div class="container-fluid">
                     <h1>Wycieczki:</h1>
                     <div class="row">
+                        <div style="margin-left: 15px;" class="form-group">
+                            <label for="countryFilterLabel">Country</label>
+                            <input type="text" class="form-control" id="countryFilterInput" placeholder="Enter country" [(ngModel)]="country">
+                        </div>
+                        <div class="form-group" style="margin-left: 15px;" >
+                            <label for="priceFromFilterLabel">Price from</label>
+                            <input type="number" class="form-control" id="priceFromFilterInput" placeholder="Enter price from" [(ngModel)]="priceFrom">
+                        </div>
+                        <div class="form-group" style="margin-left: 15px;" >
+                            <label for="priceToFilterLabel">Price to</label>
+                            <input type="number" class="form-control" id="priceToFilterInput" placeholder="Enter price to" [(ngModel)]="priceTo">
+                        </div>
+                    </div>
+                    <div class="row">
                         <app-wycieczka class="col-xs-12 col-md-6 col-sm-6 col-lg-4 col-xl-3 tour d-flex"
-                            *ngFor="let wycieczka of tours" [wycieczka]=wycieczka [isCheapest]=false
+                            *ngFor="let wycieczka of tours | country : country | priceFrom : priceFrom | priceTo : priceTo" [wycieczka]=wycieczka [isCheapest]=false
                             [isMostExpensive]=false (signaledRemoved)=tourRemoved($event)
                             (tourAddedToBasket)=tourAddedToBasket($event) [index]=wycieczka.id>
                         </app-wycieczka>
